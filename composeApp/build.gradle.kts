@@ -50,11 +50,9 @@ kotlin {
             implementation(compose.material3)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
-            implementation(libs.voyager.navigator)
             implementation(libs.composeImageLoader)
             implementation(libs.napier)
             implementation(libs.kotlinx.coroutines.core)
-            implementation(libs.moko.mvvm)
             implementation(libs.ktor.core)
             implementation(libs.composeIcons.featherIcons)
             implementation(libs.kotlinx.serialization.json)
@@ -63,6 +61,13 @@ kotlin {
             implementation(libs.koin.core)
             implementation(libs.kstore)
             implementation(libs.apollo.runtime)
+
+            implementation(libs.odyssey.core) // For core classes
+            implementation(libs.odyssey.compose) // For compose extensions
+
+            implementation(libs.kviewmodel) // Core functions
+            implementation(libs.kviewmodel.compose) // Compose extensions
+            implementation(libs.kviewmodel.odyssey) // Odyssey extensions
         }
 
         androidMain.dependencies {
