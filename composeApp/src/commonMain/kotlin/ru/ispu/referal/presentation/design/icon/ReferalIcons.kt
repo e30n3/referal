@@ -1,7 +1,7 @@
 package ru.ispu.referal.presentation.design.icon
 
 import androidx.compose.ui.graphics.vector.ImageVector
-import ru.ispu.referal.presentation.design.icon.myiconpack.Logo
+import ru.ispu.referal.presentation.design.icon.referalIcons.Logo
 import kotlin.collections.List as ____KtList
 
 object ReferalIcons

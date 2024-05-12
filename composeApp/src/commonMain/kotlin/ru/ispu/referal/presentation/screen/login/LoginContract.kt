@@ -1,15 +1,21 @@
 package ru.ispu.referal.presentation.screen.login
 
 data class LoginState(
-    val titleText: String = "",
-    val counter: Int = 0
+    val login: String = "",
+    val password: String = "",
+    val isPasswordVisible: Boolean = false,
 )
 
 sealed class LoginEvent {
-    data object IncrementClick : LoginEvent()
+    data object LoginButtonClicked : LoginEvent()
+
+    data object PasswordVisibilityClicked : LoginEvent()
+    data class LoginChanged(val newLogin: String) : LoginEvent()
+    data class PasswordChanged(val newPassword: String) : LoginEvent()
+
 }
 
 sealed class LoginAction {
-    data class NavigateToLoginScreen(val param: Int) : LoginAction()
+    data object NavigateToCompanyScreen : LoginAction()
 }
 

@@ -6,6 +6,8 @@ import android.net.Uri
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
+import org.koin.core.context.GlobalContext.startKoin
+import ru.ispu.referal.di.appModule
 
 class AndroidApp : Application() {
     companion object {
@@ -15,6 +17,9 @@ class AndroidApp : Application() {
     override fun onCreate() {
         super.onCreate()
         INSTANCE = this
+        startKoin {
+            modules(appModule)
+        }
     }
 }
 

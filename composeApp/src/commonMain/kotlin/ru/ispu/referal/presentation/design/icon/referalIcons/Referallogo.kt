@@ -1,4 +1,4 @@
-package ru.ispu.referal.presentation.design.icon.myiconpack
+package ru.ispu.referal.presentation.design.icon.referalIcons
 
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.PathFillType.Companion.NonZero

@@ -4,12 +4,13 @@ import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -18,7 +19,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.layout.ContentScale
 import com.adeo.kviewmodel.compose.ViewModel
 import com.adeo.kviewmodel.compose.observeAsState
 import kotlinx.coroutines.delay
@@ -26,7 +26,7 @@ import ru.alexgladkov.odyssey.compose.local.LocalRootController
 import ru.alexgladkov.odyssey.core.LaunchFlag
 import ru.alexgladkov.odyssey.core.animations.AnimationType
 import ru.ispu.referal.presentation.design.icon.ReferalIcons
-import ru.ispu.referal.presentation.design.icon.myiconpack.Logo
+import ru.ispu.referal.presentation.design.icon.referalIcons.Logo
 import ru.ispu.referal.presentation.navigation.NavDestinations
 
 @Composable
@@ -74,11 +74,11 @@ private fun ScreenContent(state: SplashState, eventHandler: (SplashEvent) -> Uni
                     enter = fadeIn(tween(700)),
                     exit = fadeOut(tween(700))
                 ) {
-                    Image(
-                        ReferalIcons.Logo,
-                        null,
-                        Modifier.fillMaxSize(),
-                        contentScale = ContentScale.Fit
+                    Icon(
+                        imageVector = ReferalIcons.Logo,
+                        contentDescription = null,
+                        modifier = Modifier.fillMaxSize(),
+                        tint = MaterialTheme.colorScheme.primary
                     )
                 }
             }

@@ -5,8 +5,16 @@ import com.adeo.kviewmodel.BaseSharedViewModel
 class LoginViewModel : BaseSharedViewModel<LoginState, LoginAction, LoginEvent>(LoginState()) {
     override fun obtainEvent(viewEvent: LoginEvent) {
         when (viewEvent) {
-            LoginEvent.IncrementClick -> viewState =
-                viewState.copy(counter = viewState.counter + 1)
+
+            LoginEvent.LoginButtonClicked -> viewAction = LoginAction.NavigateToCompanyScreen
+            is LoginEvent.LoginChanged ->
+                viewState = viewState.copy(login = viewEvent.newLogin)
+
+            is LoginEvent.PasswordChanged ->
+                viewState = viewState.copy(password = viewEvent.newPassword)
+
+            LoginEvent.PasswordVisibilityClicked ->
+                viewState = viewState.copy(isPasswordVisible = !viewState.isPasswordVisible)
         }
     }
 

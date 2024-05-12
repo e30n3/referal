@@ -10,4 +10,7 @@ object NavDestinations {
         Login
     }
 
+    enum class CompanyMain {
+        Main, Home, Referrals, ReferralDetail
+    }
 }
