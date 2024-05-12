@@ -54,7 +54,7 @@ fun CompanyHomeScreen() {
 @Composable
 private fun ScreenContent(state: CompanyHomeState, eventHandler: (CompanyHomeEvent) -> Unit) {
     Column {
-        TopAppBar(title = { Text("Volvo") }, actions = {
+        TopAppBar(title = { Text(state.title) }, actions = {
             IconButton({ eventHandler(CompanyHomeEvent.ProfileClicked) }) {
                 Icon(Icons.Default.Person, contentDescription = null)
             }

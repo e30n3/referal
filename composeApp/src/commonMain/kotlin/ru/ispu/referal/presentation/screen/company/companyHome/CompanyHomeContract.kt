@@ -3,7 +3,7 @@ package ru.ispu.referal.presentation.screen.company.companyHome
 import ru.ispu.referal.domain.model.Offer
 
 data class CompanyHomeState(
-    val text: String = "Company Home",
+    val title: String = "",
     val offers: List<Offer> = emptyList()
 )
 

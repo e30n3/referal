@@ -1,11 +1,14 @@
 package ru.ispu.referal.presentation.screen.login
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Password
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Button
@@ -54,8 +57,9 @@ private fun ScreenContent(state: LoginState, eventHandler: (LoginEvent) -> Unit)
         OutlinedTextField(
             value = state.login,
             onValueChange = { eventHandler(LoginEvent.LoginChanged(it)) },
-            label = { Text("Логин") },
-            modifier = Modifier.fillMaxWidth()
+            label = { Text("Email") },
+            modifier = Modifier.fillMaxWidth(),
+            leadingIcon = { Icon(Icons.Default.Email, contentDescription = null) }
         )
         OutlinedTextField(
             value = state.password,
@@ -73,8 +77,16 @@ private fun ScreenContent(state: LoginState, eventHandler: (LoginEvent) -> Unit)
             },
             visualTransformation =
             if (state.isPasswordVisible) VisualTransformation.None
-            else PasswordVisualTransformation()
+            else PasswordVisualTransformation(),
+            leadingIcon = { Icon(Icons.Default.Password, contentDescription = null) }
         )
+        AnimatedVisibility(state.isErrorVisible) {
+            Text(
+                text = "Неверный логин или пароль",
+                color = MaterialTheme.colorScheme.error,
+                modifier = Modifier.padding(vertical = 4.dp)
+            )
+        }
         Spacer(Modifier.weight(0.5f))
         Button(
             onClick = { eventHandler(LoginEvent.LoginButtonClicked) },

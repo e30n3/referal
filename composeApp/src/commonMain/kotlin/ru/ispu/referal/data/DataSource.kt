@@ -1,6 +1,7 @@
 package ru.ispu.referal.data
 
 import kotlinx.coroutines.delay
+import ru.ispu.referal.domain.model.Account
 import ru.ispu.referal.domain.model.Offer
 import ru.ispu.referal.domain.model.Referral
 import ru.ispu.referal.domain.model.ReferralStatus
@@ -76,7 +77,6 @@ class DataSource {
             description = defaultComment
         )
     )
-
 
     private var referrals = listOf(
         Referral(
@@ -154,6 +154,15 @@ class DataSource {
         )
     )
 
+    private var accounts = listOf(
+        Account(
+            name = "Volvo",
+            email = "info@volvo.com",
+            password = "vpass",
+            isCompany = true,
+        )
+    )
+
 
     suspend fun getOffers(): List<Offer> = withRandomDelay { return@withRandomDelay offers }
 
@@ -180,6 +189,9 @@ class DataSource {
         return@withRandomDelay referrals.find { it.id == referralId }
     }
 
+    suspend fun login(email: String, password: String) = withRandomDelay {
+        accounts.find { it.email == email && it.password == password }
+    }
 
     suspend fun deleteOffer(offerId: String) = withRandomDelay {
         offers = offers.filter { it.id != offerId }
@@ -189,6 +201,23 @@ class DataSource {
         offers = if (offer.id in offers.map { it.id })
             offers.map { if (it.id == offer.id) offer else it }
         else offers + offer
+    }
+
+    suspend fun updateProfile(
+        name: String,
+        email: String,
+        password: String,
+        oldEmail: String,
+        oldPassword: String,
+    ) = withRandomDelay {
+        accounts = accounts.map {
+            if (it.email == oldEmail && it.password == oldPassword) it.copy(
+                name = name,
+                email = email,
+                password = password
+            ) else it
+        }
+        accounts.find { it.email == email && it.password == password }
     }
 
 }

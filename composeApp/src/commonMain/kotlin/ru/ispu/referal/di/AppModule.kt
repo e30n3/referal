@@ -9,5 +9,5 @@ import ru.ispu.referal.domain.reporitory.Repository
 val appModule = module {
     single { DataSource() }
     single { LoaderStateRepository() }
-    factory<Repository> { RepositoryImpl(get()) }
+    single<Repository> { RepositoryImpl(get()) }
 }

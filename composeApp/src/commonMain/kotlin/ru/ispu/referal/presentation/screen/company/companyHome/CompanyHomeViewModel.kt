@@ -18,6 +18,7 @@ class CompanyHomeViewModel :
 
     private fun loadData() = viewModelScope.launch {
         loaderStateRepository.start()
+        viewState = viewState.copy(title = repository.getCurrentAccount()?.name.orEmpty())
         repository.getOffers().onSuccess {
             viewState = viewState.copy(offers = it)
         }.onFailure { it.printStackTrace() }
