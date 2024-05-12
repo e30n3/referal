@@ -6,6 +6,8 @@ data class CompanyOfferState(
     val price: String = "",
     val location: String = "",
     val commission: String = "",
+    val description: String = "",
+    val isDeleteVisible: Boolean = false,
 )
 
 sealed class CompanyOfferEvent {
@@ -15,7 +17,9 @@ sealed class CompanyOfferEvent {
     data class PriceChanged(val newValue: String) : CompanyOfferEvent()
     data class LocationChanged(val newValue: String) : CompanyOfferEvent()
     data class CommissionChanged(val newValue: String) : CompanyOfferEvent()
-
+    data class DescriptionChanged(val newValue: String) : CompanyOfferEvent()
+    data object SaveClicked : CompanyOfferEvent()
+    data object DeleteClicked : CompanyOfferEvent()
 }
 
 sealed class CompanyOfferAction {

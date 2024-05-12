@@ -11,6 +11,7 @@ import ru.ispu.referal.presentation.navigation.bottomNavigation.CompanyHomeTab
 import ru.ispu.referal.presentation.navigation.bottomNavigation.CompanyReferralTab
 import ru.ispu.referal.presentation.screen.company.companyHome.CompanyHomeScreen
 import ru.ispu.referal.presentation.screen.company.companyOffer.CompanyOfferScreen
+import ru.ispu.referal.presentation.screen.company.companyProfile.CompanyProfileScreen
 import ru.ispu.referal.presentation.screen.company.companyReferral.CompanyReferralScreen
 import ru.ispu.referal.presentation.screen.company.companyReferralDetail.CompanyReferralDetailScreen
 import ru.ispu.referal.presentation.screen.login.LoginScreen
@@ -48,6 +49,9 @@ fun RootComposeBuilder.mainCompanyScreen() {
             screen(NavDestinations.CompanyMain.Offer.name) {
                 val offer = it as? Offer
                 CompanyOfferScreen(offer)
+            }
+            screen(NavDestinations.CompanyMain.Profile.name) {
+                CompanyProfileScreen()
             }
         }
         tab(CompanyReferralTab()) {

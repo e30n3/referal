@@ -19,4 +19,10 @@ class RepositoryImpl(private val dataSource: DataSource) : Repository {
 
     override suspend fun rejectStatus(referralId: String): Result<Referral> =
         runCatching { dataSource.rejectStatus(referralId)!! }
+
+    override suspend fun deleteOffer(offerId: String): Result<Unit> =
+        runCatching { dataSource.deleteOffer(offerId) }
+
+    override suspend fun updateOffer(offer: Offer): Result<Unit> =
+        runCatching { dataSource.updateOffer(offer) }
 }

@@ -180,4 +180,15 @@ class DataSource {
         return@withRandomDelay referrals.find { it.id == referralId }
     }
 
+
+    suspend fun deleteOffer(offerId: String) = withRandomDelay {
+        offers = offers.filter { it.id != offerId }
+    }
+
+    suspend fun updateOffer(offer: Offer) = withRandomDelay {
+        offers = if (offer.id in offers.map { it.id })
+            offers.map { if (it.id == offer.id) offer else it }
+        else offers + offer
+    }
+
 }

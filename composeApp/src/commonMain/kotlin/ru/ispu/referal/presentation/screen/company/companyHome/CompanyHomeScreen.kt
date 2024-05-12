@@ -35,7 +35,10 @@ fun CompanyHomeScreen() {
         ScreenContent(viewState.value) { viewModel.obtainEvent(it) }
         viewAction.value?.let { action ->
             when (action) {
-                CompanyHomeAction.NavigateToCompanyProfile -> {}
+                CompanyHomeAction.NavigateToCompanyProfile -> rootController.push(
+                    screen = NavDestinations.CompanyMain.Profile.name,
+                )
+
                 is CompanyHomeAction.NavigateToCompanyOffer -> rootController.push(
                     screen = NavDestinations.CompanyMain.Offer.name,
                     params = action.offer
@@ -72,7 +75,7 @@ private fun ScreenContent(state: CompanyHomeState, eventHandler: (CompanyHomeEve
             }
         }
         Button(
-            onClick = {},
+            onClick = { eventHandler(CompanyHomeEvent.NewOfferClicked) },
             modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 4.dp)
         ) {
             Text("Добавить программу")

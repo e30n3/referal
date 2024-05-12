@@ -1,5 +1,7 @@
 package ru.ispu.referal.domain.model
 
+import java.util.UUID
+
 data class Offer(
     val imgUrl: String,
     val title: String,
@@ -7,4 +9,5 @@ data class Offer(
     val location: String,
     val commission: String,
     val description: String,
+    val id: String = UUID.randomUUID().toString()
 )

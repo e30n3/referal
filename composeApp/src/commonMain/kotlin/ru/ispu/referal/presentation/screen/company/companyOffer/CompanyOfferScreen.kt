@@ -1,6 +1,7 @@
 package ru.ispu.referal.presentation.screen.company.companyOffer
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -12,6 +13,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.CurrencyRuble
+import androidx.compose.material.icons.filled.Description
 import androidx.compose.material.icons.filled.Link
 import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.Percent
@@ -20,6 +22,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -64,7 +67,11 @@ private fun ScreenContent(state: CompanyOfferState, eventHandler: (CompanyOfferE
             Image(
                 painter = painter,
                 contentDescription = null,
-                modifier = Modifier.fillMaxWidth().height(128.dp).clip(RoundedCornerShape(16.dp)),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(128.dp)
+                    .clip(RoundedCornerShape(16.dp))
+                    .background(MaterialTheme.colorScheme.surfaceContainer),
                 contentScale = ContentScale.Crop
             )
             Spacer(Modifier.height(8.dp))
@@ -103,17 +110,24 @@ private fun ScreenContent(state: CompanyOfferState, eventHandler: (CompanyOfferE
                 modifier = Modifier.fillMaxWidth(),
                 leadingIcon = { Icon(Icons.Default.Percent, contentDescription = null) }
             )
+            OutlinedTextField(
+                value = state.description,
+                onValueChange = { eventHandler(CompanyOfferEvent.DescriptionChanged(it)) },
+                label = { Text("Описание") },
+                modifier = Modifier.fillMaxWidth(),
+                leadingIcon = { Icon(Icons.Default.Description, contentDescription = null) }
+            )
 
         }
         Column(Modifier.padding(vertical = 4.dp)) {
             Button(
-                onClick = {},
+                onClick = { eventHandler(CompanyOfferEvent.SaveClicked) },
                 modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp)
             ) {
                 Text("Сохранить")
             }
-            OutlinedButton(
-                onClick = {},
+            if (state.isDeleteVisible) OutlinedButton(
+                onClick = { eventHandler(CompanyOfferEvent.DeleteClicked) },
                 modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp)
             ) {
                 Text("Удалить")

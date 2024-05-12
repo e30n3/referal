@@ -18,7 +18,7 @@ data class Referral(
 
 enum class ReferralStatus(val text: String, val bgGradient: Brush, val textColor: Color) {
     FAILED(
-        text = "Failed Deal",
+        text = "Сделка провалена",
         bgGradient = Brush.horizontalGradient(listOf(Color(0xFFFFCDD2), Color(0xFFEF9A9A))),
         textColor = Color(0xFFD32F2F)
     ),
