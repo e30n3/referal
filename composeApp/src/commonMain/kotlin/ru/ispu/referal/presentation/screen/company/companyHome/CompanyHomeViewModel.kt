@@ -25,6 +25,8 @@ class CompanyHomeViewModel :
             CompanyHomeEvent.ProfileClicked -> viewAction =
                 CompanyHomeAction.NavigateToCompanyProfile
 
+            is CompanyHomeEvent.OfferClicked -> viewAction =
+                CompanyHomeAction.NavigateToCompanyOffer(viewEvent.offer)
         }
     }
 

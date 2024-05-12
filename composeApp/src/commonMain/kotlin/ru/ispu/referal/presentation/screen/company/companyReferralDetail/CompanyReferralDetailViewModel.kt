@@ -26,7 +26,31 @@ class CompanyReferralDetailViewModel(private val referral: Referral?) :
             CompanyReferralDetailEvent.BackClicked -> viewAction =
                 CompanyReferralDetailAction.NavigateBack
 
+            CompanyReferralDetailEvent.NextClicked -> viewModelScope.launch {
+                referral?.id?.let { repository.updateStatus(it) }?.onFailure {
+                    it.printStackTrace()
+                }?.onSuccess {
+                    viewState = viewState.copy(referral = it)
+                }
+            }
+
+            CompanyReferralDetailEvent.RejectClicked -> {
+
+            }
+
+            is CompanyReferralDetailEvent.AmountChanged ->
+                viewState = viewState.copy(amount = viewEvent.amount)
+
+            CompanyReferralDetailEvent.NextClickedWithAmount -> viewModelScope.launch {
+                referral?.id?.let { repository.updateStatus(it, viewState.amount.toIntOrNull()) }
+                    ?.onFailure {
+                        it.printStackTrace()
+                    }?.onSuccess {
+                        viewState = viewState.copy(referral = it)
+                    }
+            }
         }
     }
+
 
 }

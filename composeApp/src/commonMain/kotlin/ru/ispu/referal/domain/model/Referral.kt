@@ -2,6 +2,7 @@ package ru.ispu.referal.domain.model
 
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import java.util.UUID
 
 data class Referral(
     val client: String,
@@ -10,7 +11,9 @@ data class Referral(
     val email: String,
     val comment: String,
     val date: String,
-    val status: ReferralStatus
+    val status: ReferralStatus,
+    val amount: Int? = null,
+    val id: String = UUID.randomUUID().toString()
 )
 
 enum class ReferralStatus(val text: String, val bgGradient: Brush, val textColor: Color) {

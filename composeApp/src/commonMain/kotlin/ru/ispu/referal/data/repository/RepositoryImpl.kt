@@ -12,4 +12,9 @@ class RepositoryImpl(private val dataSource: DataSource) : Repository {
     override suspend fun getReferrals(): Result<List<Referral>> =
         runCatching { dataSource.getReferrals() }
 
+    override suspend fun updateStatus(
+        referralId: String,
+        amount: Int?
+    ): Result<Referral> = runCatching { dataSource.updateStatus(referralId, amount)!! }
+
 }

@@ -9,11 +9,12 @@ data class CompanyHomeState(
 
 sealed class CompanyHomeEvent {
     data object ProfileClicked : CompanyHomeEvent()
-
+    data class OfferClicked(val offer: Offer) : CompanyHomeEvent()
 
 }
 
 sealed class CompanyHomeAction {
     data object NavigateToCompanyProfile : CompanyHomeAction()
+    data class NavigateToCompanyOffer(val offer: Offer) : CompanyHomeAction()
 }
 

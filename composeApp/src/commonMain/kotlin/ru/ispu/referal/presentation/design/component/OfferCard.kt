@@ -49,8 +49,9 @@ fun OfferCard(
     location: String,
     commission: String,
     modifier: Modifier = Modifier,
+    onClick: () -> Unit,
 ) {
-    Card(modifier = modifier) {
+    Card(modifier = modifier, onClick = onClick) {
         Column(modifier = Modifier.fillMaxWidth()) {
             val painter = rememberImagePainter(imgUrl)
             Image(

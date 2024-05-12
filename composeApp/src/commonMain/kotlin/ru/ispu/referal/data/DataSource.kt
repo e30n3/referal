@@ -35,36 +35,31 @@ class DataSource {
             price = "50,000+",
             location = "Весь мир",
             commission = "1% комиссия"
-        ),
-        Offer(
+        ), Offer(
             imgUrl = randomImage,
             title = "XC70",
             price = "45,000+",
             location = "Европа",
             commission = "1% комиссия"
-        ),
-        Offer(
+        ), Offer(
             imgUrl = randomImage,
             title = "XD2000",
             price = "70,000+",
             location = "Весь мир",
             commission = "1% комиссия"
-        ),
-        Offer(
+        ), Offer(
             imgUrl = randomImage,
             title = "Truck FH",
             price = "100,000+",
             location = "Весь мир",
             commission = "5% комиссия"
-        ),
-        Offer(
+        ), Offer(
             imgUrl = randomImage,
             title = "X6",
             price = "250,000+",
             location = "Worldwide",
             commission = "1% комиссия"
-        ),
-        Offer(
+        ), Offer(
             imgUrl = randomImage,
             title = "X7",
             price = "45,000+",
@@ -73,95 +68,101 @@ class DataSource {
         )
     )
 
+    private val defaultComment =
+        "Volvo provides specialized Maecenas elementum ante vel elementum ultrices. Duis luctus aliquet metus, vel fermentum ligula mollis id."
+
     private var referrals = listOf(
         Referral(
             client = "Виктор М.",
             agent = "Никита М.",
             phone = "+7 912 345-67-89",
             email = "viktor.m@example.com",
-            comment = "Подтвердить/Отклонить",
+            comment = defaultComment,
             date = "14.03.2024",
             status = ReferralStatus.CREATED
-        ),
-        Referral(
+        ), Referral(
             client = "Борис В.",
             agent = "Максим Л.",
             phone = "+7 912 346-67-80",
             email = "boris.v@example.com",
-            comment = "Договор подписан",
+            comment = defaultComment,
             date = "12.03.2024",
             status = ReferralStatus.SIGNED
-        ),
-        Referral(
+        ), Referral(
             client = "Елисей Е.",
             agent = "Алексей В.",
             phone = "+7 912 347-67-81",
             email = "elisey.e@example.com",
-            comment = "Контакт с клиентом",
+            comment = defaultComment,
             date = "07.03.2024",
             status = ReferralStatus.IN_PROGRESS
-        ),
-        Referral(
+        ), Referral(
             client = "Данил В.",
             agent = "Евгений Е.",
             phone = "+7 912 348-67-82",
             email = "danil.v@example.com",
-            comment = "Комиссия оплачена Р 5000",
+            comment = defaultComment,
             date = "01.03.2024",
             status = ReferralStatus.PAYED
-        ),
-        Referral(
+        ), Referral(
             client = "Алексей А.",
             agent = "Тимофей Р.",
             phone = "+7 912 349-67-83",
             email = "alexey.a@example.com",
-            comment = "Failed Deal",
+            comment = defaultComment,
             date = "28.02.2024",
             status = ReferralStatus.FAILED
-        ),
-        Referral(
+        ), Referral(
             client = "София С.",
             agent = "Лариса И.",
             phone = "+7 912 350-67-84",
             email = "sofia.s@example.com",
-            comment = "Предложение принято",
+            comment = defaultComment,
             date = "15.03.2024",
             status = ReferralStatus.ACCEPTED
-        ),
-        Referral(
+        ), Referral(
             client = "Михаил Д.",
             agent = "Анна П.",
             phone = "+7 912 351-67-85",
             email = "mikhail.d@example.com",
-            comment = "Предложение сделано",
+            comment = defaultComment,
             date = "10.03.2024",
             status = ReferralStatus.OFFERED
-        ),
-        Referral(
+        ), Referral(
             client = "Ирина Ш.",
             agent = "Сергей Ф.",
             phone = "+7 912 352-67-86",
             email = "irina.s@example.com",
-            comment = "Сделка завершена",
+            comment = defaultComment,
             date = "05.03.2024",
             status = ReferralStatus.COMPLETED
-        ),
-        Referral(
+        ), Referral(
             client = "Олег Н.",
             agent = "Виктория С.",
             phone = "+7 912 353-67-87",
             email = "oleg.n@example.com",
-            comment = "Выплата комиссии",
+            comment = defaultComment,
             date = "20.02.2024",
             status = ReferralStatus.PAYING
         )
     )
 
 
-    suspend fun getOffers(): List<Offer> =
-        withRandomDelay { return@withRandomDelay offers }
+    suspend fun getOffers(): List<Offer> = withRandomDelay { return@withRandomDelay offers }
 
     suspend fun getReferrals(): List<Referral> =
         withRandomDelay { return@withRandomDelay referrals }
+
+    suspend fun updateStatus(referralId: String, amount: Int? = null) = withRandomDelay {
+        referrals = referrals.map {
+            if (it.id == referralId)
+                it.copy(
+                    status = ReferralStatus.entries[it.status.ordinal.inc()],
+                    amount = amount ?: it.amount
+                )
+            else it
+        }
+        return@withRandomDelay referrals.find { it.id == referralId }
+    }
 
 }

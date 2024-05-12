@@ -1,7 +1,5 @@
 package ru.ispu.referal.presentation.design.component
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -69,18 +67,7 @@ fun ReferralCard(
                 }
             }
             Spacer(modifier = Modifier.height(8.dp))
-
-            Box(
-                modifier = Modifier
-                    .background(brush = status.bgGradient, shape = RoundedCornerShape(50))
-                    .padding(horizontal = 16.dp, vertical = 4.dp)
-            ) {
-                Text(
-                    text = status.text,
-                    style = MaterialTheme.typography.bodySmall,
-                    color = status.textColor
-                )
-            }
+            ReferralStatusBadge(status)
         }
         LinearProgressIndicator(
             progress = { status.ordinal.toFloat() / ReferralStatus.entries.last().ordinal },

@@ -21,8 +21,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.adeo.kviewmodel.compose.ViewModel
 import com.adeo.kviewmodel.compose.observeAsState
+import ru.alexgladkov.odyssey.compose.extensions.push
 import ru.alexgladkov.odyssey.compose.local.LocalRootController
 import ru.ispu.referal.presentation.design.component.OfferCard
+import ru.ispu.referal.presentation.navigation.NavDestinations
 
 @Composable
 fun CompanyHomeScreen() {
@@ -34,6 +36,10 @@ fun CompanyHomeScreen() {
         viewAction.value?.let { action ->
             when (action) {
                 CompanyHomeAction.NavigateToCompanyProfile -> {}
+                is CompanyHomeAction.NavigateToCompanyOffer -> rootController.push(
+                    screen = NavDestinations.CompanyMain.Offer.name,
+                    params = action.offer
+                )
             }
         }
     }
@@ -62,7 +68,7 @@ private fun ScreenContent(state: CompanyHomeState, eventHandler: (CompanyHomeEve
                     price = it.price,
                     location = it.location,
                     commission = it.commission,
-                )
+                ) { eventHandler(CompanyHomeEvent.OfferClicked(it)) }
             }
         }
         Button(
