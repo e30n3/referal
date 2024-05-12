@@ -17,4 +17,6 @@ class RepositoryImpl(private val dataSource: DataSource) : Repository {
         amount: Int?
     ): Result<Referral> = runCatching { dataSource.updateStatus(referralId, amount)!! }
 
+    override suspend fun rejectStatus(referralId: String): Result<Referral> =
+        runCatching { dataSource.rejectStatus(referralId)!! }
 }

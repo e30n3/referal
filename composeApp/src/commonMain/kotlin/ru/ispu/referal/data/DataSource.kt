@@ -172,4 +172,12 @@ class DataSource {
         return@withRandomDelay referrals.find { it.id == referralId }
     }
 
+    suspend fun rejectStatus(referralId: String) = withRandomDelay {
+        referrals = referrals.map {
+            if (it.id == referralId) it.copy(status = ReferralStatus.FAILED)
+            else it
+        }
+        return@withRandomDelay referrals.find { it.id == referralId }
+    }
+
 }

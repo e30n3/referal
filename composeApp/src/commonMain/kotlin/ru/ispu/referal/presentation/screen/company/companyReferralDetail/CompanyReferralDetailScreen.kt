@@ -73,7 +73,11 @@ private fun ScreenContent(
             }
         })
         Column(Modifier.verticalScroll(rememberScrollState()).padding(16.dp)) {
-            ReferralStatus.entries.drop(1).forEach {
+            if (state.referral?.status == FAILED) {
+                ReferralStatusBadge(state.referral.status, true)
+                Spacer(Modifier.height(4.dp))
+                ReferalInfoPanel(state.referral) {}
+            } else ReferralStatus.entries.drop(1).forEach {
                 val isActive = state.referral?.status?.ordinal == it.ordinal
                 if (isActive) {
                     Spacer(Modifier.height(8.dp))

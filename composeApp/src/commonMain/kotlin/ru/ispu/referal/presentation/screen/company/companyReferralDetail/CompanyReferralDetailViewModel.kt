@@ -34,8 +34,13 @@ class CompanyReferralDetailViewModel(private val referral: Referral?) :
                 }
             }
 
-            CompanyReferralDetailEvent.RejectClicked -> {
-
+            CompanyReferralDetailEvent.RejectClicked -> viewModelScope.launch {
+                referral?.id?.let { repository.rejectStatus(it) }
+                    ?.onFailure {
+                        it.printStackTrace()
+                    }?.onSuccess {
+                        viewState = viewState.copy(referral = it)
+                    }
             }
 
             is CompanyReferralDetailEvent.AmountChanged ->
