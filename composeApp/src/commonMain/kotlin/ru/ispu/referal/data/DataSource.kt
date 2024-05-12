@@ -28,48 +28,55 @@ class DataSource {
         return action()
     }
 
+    private val defaultComment =
+        "Volvo provides specialized Maecenas elementum ante vel elementum ultrices. Duis luctus aliquet metus, vel fermentum ligula mollis id."
+
     private var offers: List<Offer> = listOf(
         Offer(
             imgUrl = randomImage,
             title = "XC90",
             price = "50,000+",
             location = "Весь мир",
-            commission = "1% комиссия"
+            commission = "1% комиссия",
+            description = defaultComment
         ), Offer(
             imgUrl = randomImage,
             title = "XC70",
             price = "45,000+",
             location = "Европа",
-            commission = "1% комиссия"
+            commission = "1% комиссия",
+            description = defaultComment
         ), Offer(
             imgUrl = randomImage,
             title = "XD2000",
             price = "70,000+",
             location = "Весь мир",
-            commission = "1% комиссия"
+            commission = "1% комиссия",
+            description = defaultComment
         ), Offer(
             imgUrl = randomImage,
             title = "Truck FH",
             price = "100,000+",
             location = "Весь мир",
-            commission = "5% комиссия"
+            commission = "5% комиссия",
+            description = defaultComment
         ), Offer(
             imgUrl = randomImage,
             title = "X6",
             price = "250,000+",
             location = "Worldwide",
-            commission = "1% комиссия"
+            commission = "1% комиссия",
+            description = defaultComment
         ), Offer(
             imgUrl = randomImage,
             title = "X7",
             price = "45,000+",
             location = "Европа",
-            commission = "1% комиссия"
+            commission = "1% комиссия",
+            description = defaultComment
         )
     )
 
-    private val defaultComment =
-        "Volvo provides specialized Maecenas elementum ante vel elementum ultrices. Duis luctus aliquet metus, vel fermentum ligula mollis id."
 
     private var referrals = listOf(
         Referral(

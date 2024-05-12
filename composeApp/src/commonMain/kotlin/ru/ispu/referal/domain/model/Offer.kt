@@ -6,4 +6,5 @@ data class Offer(
     val price: String,
     val location: String,
     val commission: String,
+    val description: String,
 )

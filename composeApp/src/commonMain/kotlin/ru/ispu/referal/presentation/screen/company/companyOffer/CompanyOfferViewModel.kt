@@ -16,14 +16,34 @@ class CompanyOfferViewModel(private val offer: Offer?) :
     }
 
     private fun loadData() = viewModelScope.launch {
-        /* repository.getOffers().onSuccess {
-             viewState = viewState.copy(offers = it)
-         }.onFailure { it.printStackTrace() }*/
+        repository.getOffers().onSuccess {
+            viewState = viewState.copy(
+                imgUrl = offer?.imgUrl ?: viewState.imgUrl,
+                title = offer?.title ?: viewState.title,
+                price = offer?.price ?: viewState.price,
+                location = offer?.location ?: viewState.location,
+                commission = offer?.commission ?: viewState.commission,
+            )
+        }.onFailure { it.printStackTrace() }
     }
 
     override fun obtainEvent(viewEvent: CompanyOfferEvent) {
         when (viewEvent) {
             CompanyOfferEvent.BackClicked -> viewAction = CompanyOfferAction.NavigateBack
+            is CompanyOfferEvent.CommissionChanged -> viewState =
+                viewState.copy(imgUrl = viewEvent.newValue)
+
+            is CompanyOfferEvent.ImgUrlChanged -> viewState =
+                viewState.copy(title = viewEvent.newValue)
+
+            is CompanyOfferEvent.LocationChanged -> viewState =
+                viewState.copy(price = viewEvent.newValue)
+
+            is CompanyOfferEvent.PriceChanged -> viewState =
+                viewState.copy(location = viewEvent.newValue)
+
+            is CompanyOfferEvent.TitleChanged -> viewState =
+                viewState.copy(commission = viewEvent.newValue)
         }
     }
 
