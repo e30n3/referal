@@ -33,11 +33,12 @@ fun RootComposeBuilder.authScreens() {
 }
 
 fun RootComposeBuilder.companyScreens() {
-    mainCompanyScreen()
+    mainCompanyScreens()
+    companyInnerScreens()
 }
 
-fun RootComposeBuilder.mainCompanyScreen() {
 
+fun RootComposeBuilder.mainCompanyScreens() {
     bottomNavigation(
         name = NavDestinations.CompanyMain.Main.name,
         tabsNavModel = BottomConfiguration()
@@ -46,23 +47,25 @@ fun RootComposeBuilder.mainCompanyScreen() {
             screen(name = NavDestinations.CompanyMain.Home.name) {
                 CompanyHomeScreen()
             }
-            screen(NavDestinations.CompanyMain.Offer.name) {
-                val offer = it as? Offer
-                CompanyOfferScreen(offer)
-            }
-            screen(NavDestinations.CompanyMain.Profile.name) {
-                CompanyProfileScreen()
-            }
         }
         tab(CompanyReferralTab()) {
             screen(name = NavDestinations.CompanyMain.Referrals.name) {
                 CompanyReferralScreen()
             }
-            screen(NavDestinations.CompanyMain.ReferralDetail.name) {
-                val referral = it as? Referral
-                CompanyReferralDetailScreen(referral)
-            }
         }
     }
+}
 
+fun RootComposeBuilder.companyInnerScreens() {
+    screen(NavDestinations.CompanyInner.Profile.name) {
+        CompanyProfileScreen()
+    }
+    screen(NavDestinations.CompanyInner.Offer.name) {
+        val offer = it as? Offer
+        CompanyOfferScreen(offer)
+    }
+    screen(NavDestinations.CompanyInner.ReferralDetail.name) {
+        val referral = it as? Referral
+        CompanyReferralDetailScreen(referral)
+    }
 }

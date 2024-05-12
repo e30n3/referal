@@ -35,14 +35,16 @@ fun CompanyHomeScreen() {
         ScreenContent(viewState.value) { viewModel.obtainEvent(it) }
         viewAction.value?.let { action ->
             when (action) {
-                CompanyHomeAction.NavigateToCompanyProfile -> rootController.push(
-                    screen = NavDestinations.CompanyMain.Profile.name,
-                )
+                CompanyHomeAction.NavigateToCompanyProfile -> rootController
+                    .findRootController().push(
+                        NavDestinations.CompanyInner.Profile.name,
+                    )
 
-                is CompanyHomeAction.NavigateToCompanyOffer -> rootController.push(
-                    screen = NavDestinations.CompanyMain.Offer.name,
-                    params = action.offer
-                )
+                is CompanyHomeAction.NavigateToCompanyOffer -> rootController
+                    .findRootController().push(
+                        screen = NavDestinations.CompanyInner.Offer.name,
+                        params = action.offer
+                    )
             }
         }
     }

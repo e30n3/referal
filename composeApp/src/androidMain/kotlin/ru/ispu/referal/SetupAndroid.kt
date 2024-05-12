@@ -13,11 +13,12 @@ import ru.alexgladkov.odyssey.compose.navigation.RootComposeBuilder
 import ru.alexgladkov.odyssey.compose.setup.OdysseyConfiguration
 import ru.alexgladkov.odyssey.compose.setup.setNavigationContent
 import ru.alexgladkov.odyssey.core.configuration.DisplayType
+import ru.ispu.referal.domain.reporitory.LoaderStateRepository
 import ru.ispu.referal.presentation.navigation.navigationGraph
 import ru.ispu.referal.presentation.theme.AppTheme
 
 
-fun ComponentActivity.setupThemedNavigation() {
+fun ComponentActivity.setupThemedNavigation(loaderStateRepository: LoaderStateRepository) {
     val rootController = RootComposeBuilder().apply { navigationGraph() }.build()
     rootController.setupWithActivity(this)
     rootController.setupWithViewModels()

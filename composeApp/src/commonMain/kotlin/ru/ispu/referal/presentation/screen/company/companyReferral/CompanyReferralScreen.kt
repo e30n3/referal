@@ -32,8 +32,8 @@ fun CompanyReferralScreen() {
         viewAction.value?.let { action ->
             when (action) {
                 is CompanyReferralAction.NavigateToReferralDetail -> {
-                    rootController.push(
-                        screen = NavDestinations.CompanyMain.ReferralDetail.name,
+                    rootController.findRootController().push(
+                        screen = NavDestinations.CompanyInner.ReferralDetail.name,
                         params = action.referral
                     )
                 }
