@@ -13,7 +13,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -60,9 +59,9 @@ fun OfferCard(
             Image(
                 painter = painter,
                 contentDescription = title,
-                contentScale = ContentScale.Crop,
+                /*  contentScale = ContentScale.Crop,*/
                 modifier = Modifier
-                    .height(200.dp)
+                    .height(128.dp)
                     .fillMaxWidth()
             )
             Column(modifier = Modifier.padding(16.dp)) {
@@ -74,8 +73,9 @@ fun OfferCard(
                         text = title,
                         style = MaterialTheme.typography.titleLarge,
                         fontSize = 18.sp,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis
+                        modifier = Modifier.weight(1f),
+                        overflow = TextOverflow.Ellipsis,
+                        maxLines = 1
                     )
                     if (companyLogo != null) {
                         val companyLogoPainter = rememberImagePainter(companyLogo)
@@ -85,6 +85,7 @@ fun OfferCard(
                             //  contentScale = ContentScale.Crop,
                             modifier = Modifier
                                 .height(24.dp)
+
                         )
                     }
                 }

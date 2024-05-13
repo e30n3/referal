@@ -9,8 +9,8 @@ import ru.ispu.referal.domain.reporitory.Repository
 class RepositoryImpl(private val dataSource: DataSource) : Repository {
 
     private var currentAccount: Account? = null
-    override suspend fun getOffers(): Result<List<Offer>> =
-        runCatching { dataSource.getOffers() }
+    override suspend fun getOffers(companyId: String?): Result<List<Offer>> =
+        runCatching { dataSource.getOffers(companyId) }
 
     override suspend fun getReferrals(): Result<List<Referral>> =
         runCatching { dataSource.getReferrals() }

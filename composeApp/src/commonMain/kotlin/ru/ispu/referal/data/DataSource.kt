@@ -1,7 +1,8 @@
 package ru.ispu.referal.data
 
 import kotlinx.coroutines.delay
-import ru.ispu.referal.domain.model.Account
+import ru.ispu.referal.data.defaultData.DefaultAccounts
+import ru.ispu.referal.data.defaultData.DefaultOffers
 import ru.ispu.referal.domain.model.Offer
 import ru.ispu.referal.domain.model.Referral
 import ru.ispu.referal.domain.model.ReferralStatus
@@ -9,20 +10,6 @@ import kotlin.random.Random
 
 class DataSource {
 
-    private val randomImages = listOf(
-        "https://fastly.picsum.photos/id/942/200/200.jpg?hmac=Gh7W-H3ZGmweB9STLwQvq-IHkxrVyawHVTKYxy-u9mA",
-        "https://fastly.picsum.photos/id/146/200/200.jpg?hmac=BEfC1fMGgqn0zNUowEDrlnKsAisQSg9rYB7RxuXpTb4",
-        "https://fastly.picsum.photos/id/1059/200/200.jpg?hmac=2w4ZTAuYGsSUL-ur3iVQO04H8398XxIaeLEGVBNRSLU",
-        "https://fastly.picsum.photos/id/1000/200/200.jpg?hmac=U6gBcO-m8lNXspqhLW17ugDZ1Z3cEcCQj07Wp9Nq7IQ",
-        "https://fastly.picsum.photos/id/74/200/200.jpg?hmac=vocZAjFd_aCjJJ-cIS28YxzM2nwLpe_EYBYW95lrzUI",
-        "https://fastly.picsum.photos/id/82/200/200.jpg?hmac=ATNAhTLN2dA0KmTzSE5D9XiPe3GMX8uwxpFlhU7U5OY",
-        "https://fastly.picsum.photos/id/371/200/200.jpg?hmac=VShu_HdkBA6-hi8lkHlFMbkqxiu0BgA4mvEKoJke228",
-        "https://fastly.picsum.photos/id/635/200/200.jpg?hmac=Vm8Tavc31Qax01634w3MOPpNCCfasJG8wnBamSi87T4",
-        "https://fastly.picsum.photos/id/432/200/200.jpg?hmac=b4-kxXh_oTpvCBH9hueJurvHDdhy0eYNNba-mO9Q8bU",
-        "https://fastly.picsum.photos/id/247/200/200.jpg?hmac=oKt3N5MCdI8hCrzIbokjpVNzUuywbK64CJn1bfRAxbA"
-    )
-
-    private val randomImage: String get() = randomImages.random()
 
     private suspend fun <T> withRandomDelay(action: () -> T): T {
         delay(Random.nextLong(100, 500))
@@ -32,63 +19,6 @@ class DataSource {
     private val defaultComment =
         "Volvo provides specialized Maecenas elementum ante vel elementum ultrices. Duis luctus aliquet metus, vel fermentum ligula mollis id."
 
-    private var offers: List<Offer> = listOf(
-        Offer(
-            imgUrl = randomImage,
-            title = "XC90",
-            price = "50,000+",
-            location = "Весь мир",
-            commission = "1% комиссия",
-            description = "defaultComment",
-            company = "Volvo",
-            companyLogo = "https://brandslogos.com/wp-content/uploads/images/large/volvo-logo.png",
-        ), Offer(
-            imgUrl = randomImage,
-            title = "XC70",
-            price = "45,000+",
-            location = "Европа",
-            commission = "1% комиссия",
-            description = defaultComment,
-            company = "Volvo",
-            companyLogo = "https://brandslogos.com/wp-content/uploads/images/large/volvo-logo.png",
-        ), Offer(
-            imgUrl = randomImage,
-            title = "XD2000",
-            price = "70,000+",
-            location = "Весь мир",
-            commission = "1% комиссия",
-            description = defaultComment,
-            company = "Volvo",
-            companyLogo = "https://brandslogos.com/wp-content/uploads/images/large/volvo-logo.png",
-        ), Offer(
-            imgUrl = randomImage,
-            title = "Truck FH",
-            price = "100,000+",
-            location = "Весь мир",
-            commission = "5% комиссия",
-            description = defaultComment,
-            company = "Volvo",
-            companyLogo = "https://brandslogos.com/wp-content/uploads/images/large/volvo-logo.png",
-        ), Offer(
-            imgUrl = randomImage,
-            title = "X6",
-            price = "250,000+",
-            location = "Worldwide",
-            commission = "1% комиссия",
-            description = defaultComment,
-            company = "Volvo",
-            companyLogo = "https://brandslogos.com/wp-content/uploads/images/large/volvo-logo.png",
-        ), Offer(
-            imgUrl = randomImage,
-            title = "X7",
-            price = "45,000+",
-            location = "Европа",
-            commission = "1% комиссия",
-            description = defaultComment,
-            company = "Volvo",
-            companyLogo = "https://brandslogos.com/wp-content/uploads/images/large/volvo-logo.png",
-        )
-    )
 
     private var referrals = listOf(
         Referral(
@@ -143,7 +73,7 @@ class DataSource {
             phone = "+7 912 350-67-84",
             email = "sofia.s@example.com",
             comment = defaultComment,
-            date = "15.03.2024",
+            date = "15.02.2024",
             status = ReferralStatus.ACCEPTED
         ), Referral(
             client = "Михаил Д.",
@@ -152,7 +82,7 @@ class DataSource {
             phone = "+7 912 351-67-85",
             email = "mikhail.d@example.com",
             comment = defaultComment,
-            date = "10.03.2024",
+            date = "10.02.2024",
             status = ReferralStatus.OFFERED
         ), Referral(
             client = "Ирина Ш.",
@@ -161,7 +91,7 @@ class DataSource {
             phone = "+7 912 352-67-86",
             email = "irina.s@example.com",
             comment = defaultComment,
-            date = "05.03.2024",
+            date = "05.02.2024",
             status = ReferralStatus.COMPLETED
         ), Referral(
             client = "Олег Н.",
@@ -170,29 +100,20 @@ class DataSource {
             phone = "+7 912 353-67-87",
             email = "oleg.n@example.com",
             comment = defaultComment,
-            date = "20.02.2024",
+            date = "20.01.2024",
             status = ReferralStatus.PAYING
         )
     )
 
-    private var accounts = listOf(
-        Account(
-            name = "Volvo",
-            email = "info@volvo.com1",
-            password = "vpass",
-            isCompany = true,
-            photoUrl = "https://brandslogos.com/wp-content/uploads/images/large/volvo-logo.png",
-        ),
-        Account(
-            name = "Андрей W.",
-            email = "info@volvo.com",
-            password = "vpass",
-            isCompany = false,
-        )
-    )
+    private var accounts = DefaultAccounts.accounts
 
-
-    suspend fun getOffers(): List<Offer> = withRandomDelay { return@withRandomDelay offers }
+    private var offers: List<Offer> = DefaultOffers.offers
+    suspend fun getOffers(companyId: String? = null): List<Offer> = withRandomDelay {
+        return@withRandomDelay offers
+            .filter { if (companyId != null) it.companyId == companyId else true }
+            .sortedByDescending { it.price.filter { it.isDigit() }.toIntOrNull() }
+            .sortedByDescending { it.commission.filter { it.isDigit() }.toIntOrNull() }
+    }
 
     suspend fun getReferrals(): List<Referral> =
         withRandomDelay { return@withRandomDelay referrals }
@@ -228,7 +149,7 @@ class DataSource {
     suspend fun updateOffer(offer: Offer) = withRandomDelay {
         offers = if (offer.id in offers.map { it.id })
             offers.map { if (it.id == offer.id) offer else it }
-        else offers + offer
+        else listOf(offer) + offers
     }
 
     suspend fun updateProfile(
@@ -249,7 +170,7 @@ class DataSource {
     }
 
     suspend fun addReferral(referral: Referral) = withRandomDelay {
-        referrals = referrals + referral
+        referrals = listOf(referral) + referrals
     }
 
 }

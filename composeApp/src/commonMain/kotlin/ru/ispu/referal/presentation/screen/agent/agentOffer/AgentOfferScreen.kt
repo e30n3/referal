@@ -31,7 +31,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import com.adeo.kviewmodel.compose.ViewModel
 import com.adeo.kviewmodel.compose.observeAsState
@@ -77,10 +76,9 @@ private fun ScreenContent(state: AgentOfferState, eventHandler: (AgentOfferEvent
                 contentDescription = null,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(256.dp)
                     .clip(RoundedCornerShape(16.dp))
                     .background(MaterialTheme.colorScheme.surfaceContainer),
-                contentScale = ContentScale.Crop
+                /*  contentScale = ContentScale.Crop*/
             )
             Spacer(Modifier.height(16.dp))
             Text(state.title, style = MaterialTheme.typography.headlineMedium)
@@ -116,7 +114,7 @@ private fun ScreenContent(state: AgentOfferState, eventHandler: (AgentOfferEvent
                 onClick = { eventHandler(AgentOfferEvent.NewReferralClicked) },
                 modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp)
             ) {
-                Text("Предложить реферала")
+                Text("Предложить клиента")
             }
         }
     }

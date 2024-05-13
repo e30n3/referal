@@ -27,11 +27,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun FilterMenu(expanded: Boolean, onDismissRequest: () -> Unit) {
+fun FilterMenu(expanded: Boolean, isFull: Boolean = true, onDismissRequest: () -> Unit) {
     var expandedSort by remember { mutableStateOf(false) }
     var expandedCategory by remember { mutableStateOf(false) }
-    var selectedSortOption by remember { mutableStateOf("цена ↑") }
-    var selectedCategoryOption by remember { mutableStateOf("Авто") }
+    var selectedSortOption by remember { mutableStateOf("комиссия % ↓") }
+    var selectedCategoryOption by remember { mutableStateOf("Все") }
 
     val sortOptions = listOf("цена ↑", "цена ↓", "комиссия % ↑", "комиссия % ↓")
     val categoryOptions = listOf(
@@ -75,43 +75,46 @@ fun FilterMenu(expanded: Boolean, onDismissRequest: () -> Unit) {
                 }
             }
 
-            Spacer(modifier = Modifier.height(16.dp))
+            if (isFull) {
+                Spacer(modifier = Modifier.height(16.dp))
 
-            // Category Drop Down
-            Text(
-                text = "категория",
-                fontWeight = FontWeight.Bold,
-                fontSize = 16.sp,
-                color = MaterialTheme.colorScheme.onSurface
-            )
-            Spacer(modifier = Modifier.height(8.dp))
-            Box(modifier = Modifier
-                .fillMaxWidth()
-                .background(MaterialTheme.colorScheme.surface)
-                .clickable { expandedCategory = true }
-                .padding(8.dp)) {
-                Text(text = selectedCategoryOption)
-                DropdownMenu(
-                    expanded = expandedCategory,
-                    onDismissRequest = { expandedCategory = false }) {
-                    categoryOptions.forEach { option ->
-                        DropdownMenuItem(text = {
-                            Row(verticalAlignment = androidx.compose.ui.Alignment.CenterVertically) {
-                                Box(
-                                    modifier = Modifier
-                                        .size(16.dp)
-                                        .background(Color(0xFFFFA500))
-                                ) // Orange color box
-                                Spacer(modifier = Modifier.width(8.dp))
-                                Text(text = option)
-                            }
-                        }, onClick = {
-                            selectedCategoryOption = option
-                            expandedCategory = false
-                        })
+                // Category Drop Down
+                Text(
+                    text = "категория",
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 16.sp,
+                    color = MaterialTheme.colorScheme.onSurface
+                )
+                Spacer(modifier = Modifier.height(8.dp))
+                Box(modifier = Modifier
+                    .fillMaxWidth()
+                    .background(MaterialTheme.colorScheme.surface)
+                    .clickable { expandedCategory = true }
+                    .padding(8.dp)) {
+                    Text(text = selectedCategoryOption)
+                    DropdownMenu(
+                        expanded = expandedCategory,
+                        onDismissRequest = { expandedCategory = false }) {
+                        categoryOptions.forEach { option ->
+                            DropdownMenuItem(text = {
+                                Row(verticalAlignment = androidx.compose.ui.Alignment.CenterVertically) {
+                                    Box(
+                                        modifier = Modifier
+                                            .size(16.dp)
+                                            .background(Color(0xFFFFA500))
+                                    ) // Orange color box
+                                    Spacer(modifier = Modifier.width(8.dp))
+                                    Text(text = option)
+                                }
+                            }, onClick = {
+                                selectedCategoryOption = option
+                                expandedCategory = false
+                            })
+                        }
                     }
                 }
             }
+
         }
     }
 }

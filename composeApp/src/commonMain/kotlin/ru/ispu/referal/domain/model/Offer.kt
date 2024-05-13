@@ -1,5 +1,6 @@
 package ru.ispu.referal.domain.model
 
+import ru.ispu.referal.data.defaultData.DefaultAccounts
 import java.util.UUID
 
 data class Offer(
@@ -10,6 +11,10 @@ data class Offer(
     val commission: String,
     val description: String,
     val company: String,
-    val companyLogo: String,
     val id: String = UUID.randomUUID().toString()
-)
+) {
+    val companyId = DefaultAccounts.accounts.find { it.name == company }?.id
+    private fun getCompany() = DefaultAccounts.accounts.find { it.id == companyId }
+
+    val companyLogo = getCompany()?.photoUrl
+}
