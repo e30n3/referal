@@ -17,12 +17,17 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.adeo.kviewmodel.compose.ViewModel
 import com.adeo.kviewmodel.compose.observeAsState
 import ru.alexgladkov.odyssey.compose.extensions.push
 import ru.alexgladkov.odyssey.compose.local.LocalRootController
+import ru.ispu.referal.presentation.design.component.FilterMenu
 import ru.ispu.referal.presentation.design.component.OfferCard
 import ru.ispu.referal.presentation.navigation.NavDestinations
 
@@ -54,10 +59,12 @@ fun AgentHomeScreen() {
 @Composable
 private fun ScreenContent(state: AgentHomeState, eventHandler: (AgentHomeEvent) -> Unit) {
     Column {
+        var expanded by remember { mutableStateOf(false) }
         TopAppBar(title = { Text(state.title) }, actions = {
-            IconButton({ }) {
+            IconButton({ expanded = true }) {
                 Icon(Icons.Default.Tune, contentDescription = null)
             }
+            FilterMenu(expanded) { expanded = false }
             Spacer(Modifier.width(4.dp))
             IconButton({ eventHandler(AgentHomeEvent.ProfileClicked) }) {
                 Icon(Icons.Default.Person, contentDescription = null)
