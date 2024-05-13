@@ -157,9 +157,15 @@ class DataSource {
     private var accounts = listOf(
         Account(
             name = "Volvo",
-            email = "info@volvo.com",
+            email = "info@volvo.com1",
             password = "vpass",
             isCompany = true,
+        ),
+        Account(
+            name = "Андрей W.",
+            email = "info@volvo.com",
+            password = "vpass",
+            isCompany = false,
         )
     )
 

@@ -1,13 +1,13 @@
-package ru.ispu.referal.presentation.screen.company.companyProfile
+package ru.ispu.referal.presentation.screen.common.profile
 
 import com.adeo.kviewmodel.BaseSharedViewModel
 import kotlinx.coroutines.launch
 import org.koin.java.KoinJavaComponent
 import ru.ispu.referal.domain.reporitory.Repository
 
-class CompanyProfileViewModel :
-    BaseSharedViewModel<CompanyProfileState, CompanyProfileAction, CompanyProfileEvent>(
-        CompanyProfileState()
+class ProfileViewModel :
+    BaseSharedViewModel<ProfileState, ProfileAction, ProfileEvent>(
+        ProfileState()
     ) {
 
     private val repository: Repository by KoinJavaComponent.inject(Repository::class.java)
@@ -21,30 +21,31 @@ class CompanyProfileViewModel :
         viewState = viewState.copy(
             name = currentAccount?.name.orEmpty(),
             email = currentAccount?.email.orEmpty(),
-            password = currentAccount?.password.orEmpty()
+            password = currentAccount?.password.orEmpty(),
+            account = currentAccount
         )
     }
 
-    override fun obtainEvent(viewEvent: CompanyProfileEvent) {
+    override fun obtainEvent(viewEvent: ProfileEvent) {
         when (viewEvent) {
-            CompanyProfileEvent.BackClicked -> viewAction = CompanyProfileAction.NavigateBack
-            is CompanyProfileEvent.EmailChanged -> viewState =
+            ProfileEvent.BackClicked -> viewAction = ProfileAction.NavigateBack
+            is ProfileEvent.EmailChanged -> viewState =
                 viewState.copy(email = viewEvent.newValue)
 
-            is CompanyProfileEvent.NameChanged -> viewState =
+            is ProfileEvent.NameChanged -> viewState =
                 viewState.copy(name = viewEvent.newValue)
 
-            is CompanyProfileEvent.PasswordChanged -> viewState =
+            is ProfileEvent.PasswordChanged -> viewState =
                 viewState.copy(password = viewEvent.newValue)
 
-            CompanyProfileEvent.LogoutClicked -> viewAction = CompanyProfileAction.NavigateToSplash
-            CompanyProfileEvent.SaveClicked -> viewModelScope.launch {
+            ProfileEvent.LogoutClicked -> viewAction = ProfileAction.NavigateToSplash
+            ProfileEvent.SaveClicked -> viewModelScope.launch {
                 repository.updateProfile(
                     name = viewState.name,
                     email = viewState.email,
                     password = viewState.password,
                 )
-                viewAction = CompanyProfileAction.NavigateBack
+                viewAction = ProfileAction.NavigateBack
             }
         }
     }

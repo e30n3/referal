@@ -5,4 +5,8 @@ data class Account(
     val email: String,
     val password: String,
     val isCompany: Boolean,
-)
+) {
+    val totalReferrals = 12
+    val successReferrals = 4
+    val progressReferrals = totalReferrals - successReferrals
+}

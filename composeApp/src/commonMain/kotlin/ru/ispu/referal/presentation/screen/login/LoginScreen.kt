@@ -40,7 +40,12 @@ fun LoginScreen() {
         viewAction.value?.let { action ->
             when (action) {
                 LoginAction.NavigateToCompanyScreen -> rootController.launch(
-                    NavDestinations.CompanyMain.Main.name,
+                    NavDestinations.CompanyMain.CompanyMain.name,
+                    launchFlag = LaunchFlag.SingleNewTask,
+                )
+
+                LoginAction.NavigateToAgentScreen -> rootController.launch(
+                    NavDestinations.AgentMain.AgentMain.name,
                     launchFlag = LaunchFlag.SingleNewTask,
                 )
             }

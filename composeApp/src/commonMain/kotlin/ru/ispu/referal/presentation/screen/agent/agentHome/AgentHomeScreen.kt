@@ -1,11 +1,9 @@
-package ru.ispu.referal.presentation.screen.company.companyHome
+package ru.ispu.referal.presentation.screen.agent.agentHome
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -13,7 +11,6 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Tune
-import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -30,24 +27,24 @@ import ru.ispu.referal.presentation.design.component.OfferCard
 import ru.ispu.referal.presentation.navigation.NavDestinations
 
 @Composable
-fun CompanyHomeScreen() {
-    ViewModel(factory = { CompanyHomeViewModel() }) { viewModel ->
+fun AgentHomeScreen() {
+    ViewModel(factory = { AgentHomeViewModel() }) { viewModel ->
         val viewState = viewModel.viewStates().observeAsState()
         val viewAction = viewModel.viewActions().observeAsState()
         val rootController = LocalRootController.current
         ScreenContent(viewState.value) { viewModel.obtainEvent(it) }
         viewAction.value?.let { action ->
             when (action) {
-                CompanyHomeAction.NavigateToCompanyProfile -> rootController
+                AgentHomeAction.NavigateToAgentProfile -> rootController
                     .findRootController().push(
                         NavDestinations.Common.Profile.name,
                     )
 
-                is CompanyHomeAction.NavigateToCompanyOffer -> rootController
+                is AgentHomeAction.NavigateToAgentOffer -> {} /*rootController
                     .findRootController().push(
-                        screen = NavDestinations.CompanyInner.CompanyOffer.name,
+                        screen = NavDestinations.AgentInner.Offer.name,
                         params = action.offer
-                    )
+                    )*/
             }
         }
     }
@@ -55,14 +52,14 @@ fun CompanyHomeScreen() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun ScreenContent(state: CompanyHomeState, eventHandler: (CompanyHomeEvent) -> Unit) {
+private fun ScreenContent(state: AgentHomeState, eventHandler: (AgentHomeEvent) -> Unit) {
     Column {
         TopAppBar(title = { Text(state.title) }, actions = {
             IconButton({ }) {
                 Icon(Icons.Default.Tune, contentDescription = null)
             }
             Spacer(Modifier.width(4.dp))
-            IconButton({ eventHandler(CompanyHomeEvent.ProfileClicked) }) {
+            IconButton({ eventHandler(AgentHomeEvent.ProfileClicked) }) {
                 Icon(Icons.Default.Person, contentDescription = null)
             }
         })
@@ -80,14 +77,8 @@ private fun ScreenContent(state: CompanyHomeState, eventHandler: (CompanyHomeEve
                     price = it.price,
                     location = it.location,
                     commission = it.commission,
-                ) { eventHandler(CompanyHomeEvent.OfferClicked(it)) }
+                ) { eventHandler(AgentHomeEvent.OfferClicked(it)) }
             }
-        }
-        Button(
-            onClick = { eventHandler(CompanyHomeEvent.NewOfferClicked) },
-            modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 4.dp)
-        ) {
-            Text("Добавить программу")
         }
     }
 }

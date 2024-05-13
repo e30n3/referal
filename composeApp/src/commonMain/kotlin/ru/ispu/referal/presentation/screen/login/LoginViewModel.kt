@@ -13,11 +13,11 @@ class LoginViewModel : BaseSharedViewModel<LoginState, LoginAction, LoginEvent>(
         when (viewEvent) {
 
             LoginEvent.LoginButtonClicked -> viewModelScope.launch {
-
                 repository.login(login = viewState.login, password = viewState.password).onFailure {
                     viewState = viewState.copy(isErrorVisible = true)
                 }.onSuccess {
-                    viewAction = LoginAction.NavigateToCompanyScreen
+                    viewAction = if (it.isCompany) LoginAction.NavigateToCompanyScreen
+                    else LoginAction.NavigateToAgentScreen
                 }
             }
 

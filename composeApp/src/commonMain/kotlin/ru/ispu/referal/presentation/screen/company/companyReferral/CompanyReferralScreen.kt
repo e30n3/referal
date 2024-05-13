@@ -33,7 +33,7 @@ fun CompanyReferralScreen() {
             when (action) {
                 is CompanyReferralAction.NavigateToReferralDetail -> {
                     rootController.findRootController().push(
-                        screen = NavDestinations.CompanyInner.ReferralDetail.name,
+                        screen = NavDestinations.CompanyInner.CompanyReferralDetail.name,
                         params = action.referral
                     )
                 }

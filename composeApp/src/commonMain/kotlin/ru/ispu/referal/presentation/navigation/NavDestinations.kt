@@ -11,10 +11,23 @@ object NavDestinations {
     }
 
     enum class CompanyMain {
-        Main, Home, Referrals,
+        CompanyMain, CompanyHome, CompanyReferrals,
     }
 
     enum class CompanyInner {
-        Profile, Offer, ReferralDetail
+        CompanyOffer, CompanyReferralDetail
     }
+
+    enum class AgentMain {
+        AgentMain, AgentHome, AgentReferrals,
+    }
+
+    enum class AgentInner {
+
+    }
+
+    enum class Common {
+        Profile
+    }
+
 }

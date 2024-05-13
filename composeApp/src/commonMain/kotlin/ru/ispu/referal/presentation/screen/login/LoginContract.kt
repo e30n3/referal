@@ -17,5 +17,6 @@ sealed class LoginEvent {
 
 sealed class LoginAction {
     data object NavigateToCompanyScreen : LoginAction()
+    data object NavigateToAgentScreen : LoginAction()
 }
 
