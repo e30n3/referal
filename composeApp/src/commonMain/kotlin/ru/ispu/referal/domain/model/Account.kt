@@ -5,6 +5,7 @@ data class Account(
     val email: String,
     val password: String,
     val isCompany: Boolean,
+    val photoUrl: String? = null,
 ) {
     val totalReferrals = 12
     val successReferrals = 4

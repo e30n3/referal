@@ -1,7 +1,9 @@
 package ru.ispu.referal.presentation.design.component
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -49,6 +51,7 @@ fun OfferCard(
     location: String,
     commission: String,
     modifier: Modifier = Modifier,
+    companyLogo: String? = null,
     onClick: () -> Unit,
 ) {
     Card(modifier = modifier, onClick = onClick) {
@@ -63,13 +66,28 @@ fun OfferCard(
                     .fillMaxWidth()
             )
             Column(modifier = Modifier.padding(16.dp)) {
-                Text(
-                    text = title,
-                    style = MaterialTheme.typography.titleLarge,
-                    fontSize = 18.sp,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
-                )
+                Row(
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Text(
+                        text = title,
+                        style = MaterialTheme.typography.titleLarge,
+                        fontSize = 18.sp,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                    if (companyLogo != null) {
+                        val companyLogoPainter = rememberImagePainter(companyLogo)
+                        Image(
+                            painter = companyLogoPainter,
+                            contentDescription = title,
+                            //  contentScale = ContentScale.Crop,
+                            modifier = Modifier
+                                .height(24.dp)
+                        )
+                    }
+                }
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(
                     text = price,

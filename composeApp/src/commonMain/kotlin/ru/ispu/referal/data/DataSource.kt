@@ -39,8 +39,9 @@ class DataSource {
             price = "50,000+",
             location = "Весь мир",
             commission = "1% комиссия",
-            description = defaultComment,
-            company = "Volvo"
+            description = "defaultComment",
+            company = "Volvo",
+            companyLogo = "https://brandslogos.com/wp-content/uploads/images/large/volvo-logo.png",
         ), Offer(
             imgUrl = randomImage,
             title = "XC70",
@@ -48,7 +49,8 @@ class DataSource {
             location = "Европа",
             commission = "1% комиссия",
             description = defaultComment,
-            company = "Volvo"
+            company = "Volvo",
+            companyLogo = "https://brandslogos.com/wp-content/uploads/images/large/volvo-logo.png",
         ), Offer(
             imgUrl = randomImage,
             title = "XD2000",
@@ -56,7 +58,8 @@ class DataSource {
             location = "Весь мир",
             commission = "1% комиссия",
             description = defaultComment,
-            company = "Volvo"
+            company = "Volvo",
+            companyLogo = "https://brandslogos.com/wp-content/uploads/images/large/volvo-logo.png",
         ), Offer(
             imgUrl = randomImage,
             title = "Truck FH",
@@ -64,7 +67,8 @@ class DataSource {
             location = "Весь мир",
             commission = "5% комиссия",
             description = defaultComment,
-            company = "Volvo"
+            company = "Volvo",
+            companyLogo = "https://brandslogos.com/wp-content/uploads/images/large/volvo-logo.png",
         ), Offer(
             imgUrl = randomImage,
             title = "X6",
@@ -72,7 +76,8 @@ class DataSource {
             location = "Worldwide",
             commission = "1% комиссия",
             description = defaultComment,
-            company = "Volvo"
+            company = "Volvo",
+            companyLogo = "https://brandslogos.com/wp-content/uploads/images/large/volvo-logo.png",
         ), Offer(
             imgUrl = randomImage,
             title = "X7",
@@ -80,7 +85,8 @@ class DataSource {
             location = "Европа",
             commission = "1% комиссия",
             description = defaultComment,
-            company = "Volvo"
+            company = "Volvo",
+            companyLogo = "https://brandslogos.com/wp-content/uploads/images/large/volvo-logo.png",
         )
     )
 
@@ -175,6 +181,7 @@ class DataSource {
             email = "info@volvo.com1",
             password = "vpass",
             isCompany = true,
+            photoUrl = "https://brandslogos.com/wp-content/uploads/images/large/volvo-logo.png",
         ),
         Account(
             name = "Андрей W.",

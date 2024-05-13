@@ -77,6 +77,7 @@ private fun ScreenContent(state: AgentHomeState, eventHandler: (AgentHomeEvent) 
                     price = it.price,
                     location = it.location,
                     commission = it.commission,
+                    companyLogo = it.companyLogo
                 ) { eventHandler(AgentHomeEvent.OfferClicked(it)) }
             }
         }
