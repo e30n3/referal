@@ -39,42 +39,48 @@ class DataSource {
             price = "50,000+",
             location = "Весь мир",
             commission = "1% комиссия",
-            description = defaultComment
+            description = defaultComment,
+            company = "Volvo"
         ), Offer(
             imgUrl = randomImage,
             title = "XC70",
             price = "45,000+",
             location = "Европа",
             commission = "1% комиссия",
-            description = defaultComment
+            description = defaultComment,
+            company = "Volvo"
         ), Offer(
             imgUrl = randomImage,
             title = "XD2000",
             price = "70,000+",
             location = "Весь мир",
             commission = "1% комиссия",
-            description = defaultComment
+            description = defaultComment,
+            company = "Volvo"
         ), Offer(
             imgUrl = randomImage,
             title = "Truck FH",
             price = "100,000+",
             location = "Весь мир",
             commission = "5% комиссия",
-            description = defaultComment
+            description = defaultComment,
+            company = "Volvo"
         ), Offer(
             imgUrl = randomImage,
             title = "X6",
             price = "250,000+",
             location = "Worldwide",
             commission = "1% комиссия",
-            description = defaultComment
+            description = defaultComment,
+            company = "Volvo"
         ), Offer(
             imgUrl = randomImage,
             title = "X7",
             price = "45,000+",
             location = "Европа",
             commission = "1% комиссия",
-            description = defaultComment
+            description = defaultComment,
+            company = "Volvo"
         )
     )
 
@@ -82,6 +88,7 @@ class DataSource {
         Referral(
             client = "Виктор М.",
             agent = "Никита М.",
+            company = "BMW",
             phone = "+7 912 345-67-89",
             email = "viktor.m@example.com",
             comment = defaultComment,
@@ -90,6 +97,7 @@ class DataSource {
         ), Referral(
             client = "Борис В.",
             agent = "Максим Л.",
+            company = "Tesla",
             phone = "+7 912 346-67-80",
             email = "boris.v@example.com",
             comment = defaultComment,
@@ -98,6 +106,7 @@ class DataSource {
         ), Referral(
             client = "Елисей Е.",
             agent = "Алексей В.",
+            company = "Mercedes-Benz",
             phone = "+7 912 347-67-81",
             email = "elisey.e@example.com",
             comment = defaultComment,
@@ -106,6 +115,7 @@ class DataSource {
         ), Referral(
             client = "Данил В.",
             agent = "Евгений Е.",
+            company = "Volvo",
             phone = "+7 912 348-67-82",
             email = "danil.v@example.com",
             comment = defaultComment,
@@ -114,6 +124,7 @@ class DataSource {
         ), Referral(
             client = "Алексей А.",
             agent = "Тимофей Р.",
+            company = "BMW",
             phone = "+7 912 349-67-83",
             email = "alexey.a@example.com",
             comment = defaultComment,
@@ -122,6 +133,7 @@ class DataSource {
         ), Referral(
             client = "София С.",
             agent = "Лариса И.",
+            company = "Mercedes-Benz",
             phone = "+7 912 350-67-84",
             email = "sofia.s@example.com",
             comment = defaultComment,
@@ -130,6 +142,7 @@ class DataSource {
         ), Referral(
             client = "Михаил Д.",
             agent = "Анна П.",
+            company = "Volvo",
             phone = "+7 912 351-67-85",
             email = "mikhail.d@example.com",
             comment = defaultComment,
@@ -138,6 +151,7 @@ class DataSource {
         ), Referral(
             client = "Ирина Ш.",
             agent = "Сергей Ф.",
+            company = "BMW",
             phone = "+7 912 352-67-86",
             email = "irina.s@example.com",
             comment = defaultComment,
@@ -146,6 +160,7 @@ class DataSource {
         ), Referral(
             client = "Олег Н.",
             agent = "Виктория С.",
+            company = "BMW",
             phone = "+7 912 353-67-87",
             email = "oleg.n@example.com",
             comment = defaultComment,

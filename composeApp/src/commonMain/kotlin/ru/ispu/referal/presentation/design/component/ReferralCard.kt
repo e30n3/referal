@@ -22,9 +22,10 @@ import ru.ispu.referal.domain.model.ReferralStatus
 @Composable
 fun ReferralCard(
     client: String,
-    agent: String,
+    agentOrCompany: String,
     date: String,
     status: ReferralStatus,
+    isForAgent: Boolean = false,
     onClick: () -> Unit,
 ) {
     Card(
@@ -55,12 +56,12 @@ fun ReferralCard(
                 }
                 Column(horizontalAlignment = Alignment.End) {
                     Text(
-                        text = agent,
+                        text = agentOrCompany,
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.primary
                     )
                     Text(
-                        text = "Агент",
+                        text = if (isForAgent) "Компания" else "Агент",
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.primary
                     )

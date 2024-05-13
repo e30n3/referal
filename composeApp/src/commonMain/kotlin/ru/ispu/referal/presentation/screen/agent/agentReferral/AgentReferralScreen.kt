@@ -1,4 +1,4 @@
-package ru.ispu.referal.presentation.screen.company.companyReferral
+package ru.ispu.referal.presentation.screen.agent.agentReferral
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -23,17 +23,17 @@ import ru.ispu.referal.presentation.design.component.ReferralCard
 import ru.ispu.referal.presentation.navigation.NavDestinations
 
 @Composable
-fun CompanyReferralScreen() {
-    ViewModel(factory = { CompanyReferralViewModel() }) { viewModel ->
+fun AgentReferralScreen() {
+    ViewModel(factory = { AgentReferralViewModel() }) { viewModel ->
         val viewState = viewModel.viewStates().observeAsState()
         val viewAction = viewModel.viewActions().observeAsState()
         val rootController = LocalRootController.current
         ScreenContent(viewState.value) { viewModel.obtainEvent(it) }
         viewAction.value?.let { action ->
             when (action) {
-                is CompanyReferralAction.NavigateToReferralDetail -> {
+                is AgentReferralAction.NavigateToReferralDetail -> {
                     rootController.findRootController().push(
-                        screen = NavDestinations.CompanyInner.CompanyReferralDetail.name,
+                        screen = NavDestinations.AgentInner.AgentReferralDetail.name,
                         params = action.referral
                     )
                 }
@@ -45,8 +45,8 @@ fun CompanyReferralScreen() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun ScreenContent(
-    state: CompanyReferralState,
-    eventHandler: (CompanyReferralEvent) -> Unit
+    state: AgentReferralState,
+    eventHandler: (AgentReferralEvent) -> Unit
 ) {
     Column {
         TopAppBar(title = { Text("Рефералы") }, actions = {
@@ -62,11 +62,12 @@ private fun ScreenContent(
             items(state.referrals) {
                 ReferralCard(
                     client = it.client,
-                    agentOrCompany = it.agent,
+                    agentOrCompany = it.company,
                     date = it.date,
-                    status = it.status
+                    status = it.status,
+                    isForAgent = true
                 ) {
-                    eventHandler(CompanyReferralEvent.ReferralClicked(it))
+                    eventHandler(AgentReferralEvent.ReferralClicked(it))
                 }
             }
         }

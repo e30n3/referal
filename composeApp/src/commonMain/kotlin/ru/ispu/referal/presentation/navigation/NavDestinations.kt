@@ -23,7 +23,7 @@ object NavDestinations {
     }
 
     enum class AgentInner {
-        AgentOffer, AgentNewReferral
+        AgentOffer, AgentNewReferral, AgentReferralDetail
     }
 
     enum class Common {

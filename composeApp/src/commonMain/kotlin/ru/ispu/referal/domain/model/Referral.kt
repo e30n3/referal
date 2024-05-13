@@ -8,12 +8,13 @@ import java.util.UUID
 data class Referral(
     val client: String,
     val agent: String,
+    val company: String,
     val phone: String,
     val email: String,
     val comment: String,
     val date: String,
     val status: ReferralStatus,
-    val amount: Int? = null,
+    val amount: Int? = 5000,
     val id: String = UUID.randomUUID().toString()
 ) {
 

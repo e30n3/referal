@@ -1,6 +1,5 @@
 package ru.ispu.referal.presentation.navigation
 
-import androidx.compose.material3.Text
 import ru.alexgladkov.odyssey.compose.extensions.bottomNavigation
 import ru.alexgladkov.odyssey.compose.extensions.screen
 import ru.alexgladkov.odyssey.compose.extensions.tab
@@ -13,6 +12,8 @@ import ru.ispu.referal.presentation.navigation.bottomNavigation.ReferralTab
 import ru.ispu.referal.presentation.screen.agent.agentHome.AgentHomeScreen
 import ru.ispu.referal.presentation.screen.agent.agentNewReferral.AgentNewReferralScreen
 import ru.ispu.referal.presentation.screen.agent.agentOffer.AgentOfferScreen
+import ru.ispu.referal.presentation.screen.agent.agentReferral.AgentReferralScreen
+import ru.ispu.referal.presentation.screen.agent.agentReferralDetail.AgentReferralDetailScreen
 import ru.ispu.referal.presentation.screen.common.profile.ProfileScreen
 import ru.ispu.referal.presentation.screen.company.companyHome.CompanyHomeScreen
 import ru.ispu.referal.presentation.screen.company.companyOffer.CompanyOfferScreen
@@ -90,8 +91,7 @@ fun RootComposeBuilder.mainAgentScreens() {
         }
         tab(ReferralTab()) {
             screen(name = NavDestinations.AgentMain.AgentReferrals.name) {
-                //CompanyReferralScreen()
-                Text("2")
+                AgentReferralScreen()
             }
         }
     }
@@ -105,6 +105,10 @@ fun RootComposeBuilder.agentInnerScreens() {
     screen(NavDestinations.AgentInner.AgentNewReferral.name) {
         val offer = it as? Offer
         AgentNewReferralScreen(offer)
+    }
+    screen(NavDestinations.AgentInner.AgentReferralDetail.name) {
+        val referral = it as? Referral
+        AgentReferralDetailScreen(referral)
     }
 }
 

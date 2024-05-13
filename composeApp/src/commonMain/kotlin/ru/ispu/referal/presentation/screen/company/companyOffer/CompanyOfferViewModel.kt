@@ -71,7 +71,8 @@ class CompanyOfferViewModel(private val offer: Offer?) :
                     price = viewState.price,
                     location = viewState.location,
                     commission = viewState.commission,
-                    description = viewState.description
+                    description = viewState.description,
+                    company = repository.getCurrentAccount()?.name.orEmpty()
                 )).let {
                     repository.updateOffer(it)
                         .onFailure { e ->

@@ -9,5 +9,6 @@ data class Offer(
     val location: String,
     val commission: String,
     val description: String,
+    val company: String,
     val id: String = UUID.randomUUID().toString()
 )

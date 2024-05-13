@@ -37,6 +37,7 @@ class AgentNewReferralViewModel(private val offer: Offer?) :
                     Referral(
                         client = viewState.name,
                         agent = repository.getCurrentAccount()?.name.orEmpty(),
+                        company = offer?.company.orEmpty(),
                         phone = viewState.phone,
                         email = viewState.email,
                         comment = viewState.comment,
