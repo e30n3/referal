@@ -12,8 +12,8 @@ class RepositoryImpl(private val dataSource: DataSource) : Repository {
     override suspend fun getOffers(companyId: String?): Result<List<Offer>> =
         runCatching { dataSource.getOffers(companyId) }
 
-    override suspend fun getReferrals(): Result<List<Referral>> =
-        runCatching { dataSource.getReferrals() }
+    override suspend fun getReferrals(accountId: String?): Result<List<Referral>> =
+        runCatching { dataSource.getReferrals(accountId) }
 
     override suspend fun updateStatus(
         referralId: String,

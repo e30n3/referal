@@ -3,107 +3,22 @@ package ru.ispu.referal.data
 import kotlinx.coroutines.delay
 import ru.ispu.referal.data.defaultData.DefaultAccounts
 import ru.ispu.referal.data.defaultData.DefaultOffers
+import ru.ispu.referal.data.defaultData.DefaultReferrals
 import ru.ispu.referal.domain.model.Offer
 import ru.ispu.referal.domain.model.Referral
 import ru.ispu.referal.domain.model.ReferralStatus
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import kotlin.random.Random
 
 class DataSource {
-
 
     private suspend fun <T> withRandomDelay(action: () -> T): T {
         delay(Random.nextLong(100, 500))
         return action()
     }
 
-    private val defaultComment =
-        "Volvo provides specialized Maecenas elementum ante vel elementum ultrices. Duis luctus aliquet metus, vel fermentum ligula mollis id."
-
-
-    private var referrals = listOf(
-        Referral(
-            client = "Виктор М.",
-            agent = "Никита М.",
-            company = "BMW",
-            phone = "+7 912 345-67-89",
-            email = "viktor.m@example.com",
-            comment = defaultComment,
-            date = "14.03.2024",
-            status = ReferralStatus.CREATED
-        ), Referral(
-            client = "Борис В.",
-            agent = "Максим Л.",
-            company = "Tesla",
-            phone = "+7 912 346-67-80",
-            email = "boris.v@example.com",
-            comment = defaultComment,
-            date = "12.03.2024",
-            status = ReferralStatus.SIGNED
-        ), Referral(
-            client = "Елисей Е.",
-            agent = "Алексей В.",
-            company = "Mercedes-Benz",
-            phone = "+7 912 347-67-81",
-            email = "elisey.e@example.com",
-            comment = defaultComment,
-            date = "07.03.2024",
-            status = ReferralStatus.IN_PROGRESS
-        ), Referral(
-            client = "Данил В.",
-            agent = "Евгений Е.",
-            company = "Volvo",
-            phone = "+7 912 348-67-82",
-            email = "danil.v@example.com",
-            comment = defaultComment,
-            date = "01.03.2024",
-            status = ReferralStatus.PAYED
-        ), Referral(
-            client = "Алексей А.",
-            agent = "Тимофей Р.",
-            company = "BMW",
-            phone = "+7 912 349-67-83",
-            email = "alexey.a@example.com",
-            comment = defaultComment,
-            date = "28.02.2024",
-            status = ReferralStatus.FAILED
-        ), Referral(
-            client = "София С.",
-            agent = "Лариса И.",
-            company = "Mercedes-Benz",
-            phone = "+7 912 350-67-84",
-            email = "sofia.s@example.com",
-            comment = defaultComment,
-            date = "15.02.2024",
-            status = ReferralStatus.ACCEPTED
-        ), Referral(
-            client = "Михаил Д.",
-            agent = "Анна П.",
-            company = "Volvo",
-            phone = "+7 912 351-67-85",
-            email = "mikhail.d@example.com",
-            comment = defaultComment,
-            date = "10.02.2024",
-            status = ReferralStatus.OFFERED
-        ), Referral(
-            client = "Ирина Ш.",
-            agent = "Сергей Ф.",
-            company = "BMW",
-            phone = "+7 912 352-67-86",
-            email = "irina.s@example.com",
-            comment = defaultComment,
-            date = "05.02.2024",
-            status = ReferralStatus.COMPLETED
-        ), Referral(
-            client = "Олег Н.",
-            agent = "Виктория С.",
-            company = "BMW",
-            phone = "+7 912 353-67-87",
-            email = "oleg.n@example.com",
-            comment = defaultComment,
-            date = "20.01.2024",
-            status = ReferralStatus.PAYING
-        )
-    )
+    private var referrals = DefaultReferrals.referrals
 
     private var accounts = DefaultAccounts.accounts
 
@@ -115,8 +30,17 @@ class DataSource {
             .sortedByDescending { it.commission.filter { it.isDigit() }.toIntOrNull() }
     }
 
-    suspend fun getReferrals(): List<Referral> =
-        withRandomDelay { return@withRandomDelay referrals }
+    suspend fun getReferrals(accountId: String? = null): List<Referral> =
+        withRandomDelay {
+            return@withRandomDelay referrals
+                .filter { it.companyId == accountId || it.agentId == accountId }
+                .sortedByDescending {
+                    LocalDate.parse(
+                        it.date,
+                        DateTimeFormatter.ofPattern("dd.MM.yyyy")
+                    )
+                }
+        }
 
     suspend fun updateStatus(referralId: String, amount: Int? = null) = withRandomDelay {
         referrals = referrals.map {

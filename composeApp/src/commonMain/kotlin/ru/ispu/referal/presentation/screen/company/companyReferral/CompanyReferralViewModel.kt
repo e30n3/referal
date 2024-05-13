@@ -17,7 +17,7 @@ class CompanyReferralViewModel :
     }
 
     private fun loadData() = viewModelScope.launch {
-        repository.getReferrals().onSuccess {
+        repository.getReferrals(repository.getCurrentAccount()?.id).onSuccess {
             viewState = viewState.copy(referrals = it)
         }.onFailure { it.printStackTrace() }
     }

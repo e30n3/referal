@@ -2,6 +2,7 @@ package ru.ispu.referal.domain.model
 
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import ru.ispu.referal.data.defaultData.DefaultAccounts
 import ru.ispu.referal.domain.toHash256
 import java.util.UUID
 
@@ -17,9 +18,11 @@ data class Referral(
     val amount: Int? = 5000,
     val id: String = UUID.randomUUID().toString()
 ) {
-
     val phoneHash = phone.filter { it.isDigit() }.toHash256()
 
+    val companyId = DefaultAccounts.accounts.find { it.name == company }?.id
+
+    val agentId = DefaultAccounts.accounts.find { it.name == agent }?.id
 }
 
 enum class ReferralStatus(val text: String, val bgGradient: Brush, val textColor: Color) {

@@ -56,8 +56,14 @@ object DefaultAccounts {
 
 
         Account(
-            name = "Андрей W.",
+            name = "Андрей Б.",
             email = "info@a.com",
+            password = "vpass",
+            isCompany = false,
+        ),
+        Account(
+            name = "Иван З.",
+            email = "info@i.com",
             password = "vpass",
             isCompany = false,
         )
