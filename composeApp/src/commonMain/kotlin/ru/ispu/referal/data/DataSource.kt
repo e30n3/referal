@@ -226,4 +226,8 @@ class DataSource {
         accounts.find { it.email == email && it.password == password }
     }
 
+    suspend fun addReferral(referral: Referral) = withRandomDelay {
+        referrals = referrals + referral
+    }
+
 }

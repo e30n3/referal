@@ -69,7 +69,7 @@ private fun ScreenContent(state: CompanyOfferState, eventHandler: (CompanyOfferE
                 contentDescription = null,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(128.dp)
+                    .height(256.dp)
                     .clip(RoundedCornerShape(16.dp))
                     .background(MaterialTheme.colorScheme.surfaceContainer),
                 contentScale = ContentScale.Crop

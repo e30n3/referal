@@ -40,11 +40,11 @@ fun AgentHomeScreen() {
                         NavDestinations.Common.Profile.name,
                     )
 
-                is AgentHomeAction.NavigateToAgentOffer -> {} /*rootController
+                is AgentHomeAction.NavigateToAgentOffer -> rootController
                     .findRootController().push(
-                        screen = NavDestinations.AgentInner.Offer.name,
+                        screen = NavDestinations.AgentInner.AgentOffer.name,
                         params = action.offer
-                    )*/
+                    )
             }
         }
     }

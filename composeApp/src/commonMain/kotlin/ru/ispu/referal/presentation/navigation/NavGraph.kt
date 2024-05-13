@@ -11,6 +11,8 @@ import ru.ispu.referal.presentation.navigation.bottomNavigation.BottomConfigurat
 import ru.ispu.referal.presentation.navigation.bottomNavigation.HomeTab
 import ru.ispu.referal.presentation.navigation.bottomNavigation.ReferralTab
 import ru.ispu.referal.presentation.screen.agent.agentHome.AgentHomeScreen
+import ru.ispu.referal.presentation.screen.agent.agentNewReferral.AgentNewReferralScreen
+import ru.ispu.referal.presentation.screen.agent.agentOffer.AgentOfferScreen
 import ru.ispu.referal.presentation.screen.common.profile.ProfileScreen
 import ru.ispu.referal.presentation.screen.company.companyHome.CompanyHomeScreen
 import ru.ispu.referal.presentation.screen.company.companyOffer.CompanyOfferScreen
@@ -73,6 +75,7 @@ fun RootComposeBuilder.companyInnerScreens() {
 
 fun RootComposeBuilder.agentScreens() {
     mainAgentScreens()
+    agentInnerScreens()
 }
 
 fun RootComposeBuilder.mainAgentScreens() {
@@ -91,6 +94,17 @@ fun RootComposeBuilder.mainAgentScreens() {
                 Text("2")
             }
         }
+    }
+}
+
+fun RootComposeBuilder.agentInnerScreens() {
+    screen(NavDestinations.AgentInner.AgentOffer.name) {
+        val offer = it as? Offer
+        AgentOfferScreen(offer)
+    }
+    screen(NavDestinations.AgentInner.AgentNewReferral.name) {
+        val offer = it as? Offer
+        AgentNewReferralScreen(offer)
     }
 }
 

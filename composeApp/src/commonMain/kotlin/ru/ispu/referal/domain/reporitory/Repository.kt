@@ -14,4 +14,5 @@ interface Repository {
     suspend fun login(login: String, password: String): Result<Account>
     fun getCurrentAccount(): Account?
     suspend fun updateProfile(name: String, email: String, password: String): Result<Account>
+    suspend fun addReferral(referral: Referral): Result<Unit>
 }

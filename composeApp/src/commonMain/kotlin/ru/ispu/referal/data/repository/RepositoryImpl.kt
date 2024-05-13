@@ -52,4 +52,8 @@ class RepositoryImpl(private val dataSource: DataSource) : Repository {
             )!!
             currentAccount!!
         }
+
+    override suspend fun addReferral(referral: Referral): Result<Unit> = runCatching {
+        dataSource.addReferral(referral)
+    }
 }
