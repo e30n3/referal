@@ -1,5 +1,6 @@
 package ru.ispu.referal.presentation.screen.agent.agentReferralDetail
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -20,6 +21,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.adeo.kviewmodel.compose.ViewModel
@@ -70,7 +73,16 @@ private fun ScreenContent(
             if (state.referral?.status == FAILED) {
                 ReferralStatusBadge(state.referral.status, true)
                 Spacer(Modifier.height(4.dp))
-                ReferalInfoPanel(state.referral) {}
+                ReferalInfoPanel(state.referral) {
+                    val isTextVisible = remember { mutableStateOf(false) }
+                    Button(
+                        onClick = { isTextVisible.value = true },
+                        modifier = Modifier.fillMaxWidth()
+                    ) { Text("Отправить жалобу") }
+                    AnimatedVisibility(isTextVisible.value) {
+                        Text("Спасибо, ваша жалоба будет рассмотрена!")
+                    }
+                }
             } else ReferralStatus.entries.drop(1).forEach {
                 val isActive = state.referral?.status?.ordinal == it.ordinal
                 if (isActive) {
