@@ -2,6 +2,7 @@ package ru.ispu.referal.domain.model
 
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import ru.ispu.referal.domain.toHash256
 import java.util.UUID
 
 data class Referral(
@@ -14,7 +15,11 @@ data class Referral(
     val status: ReferralStatus,
     val amount: Int? = null,
     val id: String = UUID.randomUUID().toString()
-)
+) {
+
+    val phoneHash = phone.filter { it.isDigit() }.toHash256()
+
+}
 
 enum class ReferralStatus(val text: String, val bgGradient: Brush, val textColor: Color) {
     FAILED(

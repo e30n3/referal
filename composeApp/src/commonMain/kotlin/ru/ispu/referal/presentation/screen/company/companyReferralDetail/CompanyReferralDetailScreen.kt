@@ -84,7 +84,10 @@ private fun ScreenContent(
                     ReferralStatusBadge(it, true)
                     Spacer(Modifier.height(4.dp))
                     state.referral?.let { ref ->
-                        ReferalInfoPanel(ref) {
+                        ReferalInfoPanel(
+                            referral = ref,
+                            isHide = state.referral.status == CREATED
+                        ) {
                             when (state.referral.status) {
                                 FAILED -> {}
                                 CREATED, ACCEPTED, IN_PROGRESS, OFFERED -> DefaultButtonColumn(
