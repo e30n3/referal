@@ -1,12 +1,14 @@
 package ru.ispu.referal.presentation.screen.common.profile
 
 import ru.ispu.referal.domain.model.Account
+import ru.ispu.referal.domain.model.AccountStat
 
 data class ProfileState(
     val name: String = "",
     val email: String = "",
     val password: String = "",
     val account: Account? = null,
+    val accountStat: AccountStat? = null,
 )
 
 sealed class ProfileEvent {

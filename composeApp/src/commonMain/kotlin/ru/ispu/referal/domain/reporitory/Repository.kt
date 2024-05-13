@@ -1,6 +1,7 @@
 package ru.ispu.referal.domain.reporitory
 
 import ru.ispu.referal.domain.model.Account
+import ru.ispu.referal.domain.model.AccountStat
 import ru.ispu.referal.domain.model.Offer
 import ru.ispu.referal.domain.model.Referral
 
@@ -15,4 +16,5 @@ interface Repository {
     fun getCurrentAccount(): Account?
     suspend fun updateProfile(name: String, email: String, password: String): Result<Account>
     suspend fun addReferral(referral: Referral): Result<Unit>
+    suspend fun getAccountStats(): AccountStat?
 }

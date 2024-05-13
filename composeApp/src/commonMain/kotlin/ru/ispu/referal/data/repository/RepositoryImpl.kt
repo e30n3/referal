@@ -2,6 +2,7 @@ package ru.ispu.referal.data.repository
 
 import ru.ispu.referal.data.DataSource
 import ru.ispu.referal.domain.model.Account
+import ru.ispu.referal.domain.model.AccountStat
 import ru.ispu.referal.domain.model.Offer
 import ru.ispu.referal.domain.model.Referral
 import ru.ispu.referal.domain.reporitory.Repository
@@ -36,6 +37,8 @@ class RepositoryImpl(private val dataSource: DataSource) : Repository {
         }
 
     override fun getCurrentAccount(): Account? = currentAccount
+    override suspend fun getAccountStats(): AccountStat? =
+        dataSource.getAccountStats(currentAccount?.id.orEmpty())
 
     override suspend fun updateProfile(
         name: String,

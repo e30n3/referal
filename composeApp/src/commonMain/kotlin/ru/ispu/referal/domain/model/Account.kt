@@ -9,8 +9,4 @@ data class Account(
     val isCompany: Boolean,
     val photoUrl: String? = null,
     val id: String = UUID.randomUUID().toString(),
-) {
-    val totalReferrals = 12
-    val successReferrals = 4
-    val progressReferrals = totalReferrals - successReferrals
-}
+)

@@ -92,18 +92,18 @@ private fun ScreenContent(state: ProfileState, eventHandler: (ProfileEvent) -> U
                 Column(Modifier.padding(16.dp).fillMaxWidth()) {
                     Text("Статистика", style = MaterialTheme.typography.headlineSmall)
                     Text(
-                        "${state.account?.totalReferrals} рефералов:",
+                        "${state.accountStat?.total} рефералов:",
                     )
                     Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
                         Icon(Icons.Default.CheckCircle, null)
                         Text(
-                            "${state.account?.successReferrals} успешных",
+                            "${state.accountStat?.success} успешных",
                         )
                     }
                     Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
                         Icon(Icons.Default.Pending, null)
                         Text(
-                            "${state.account?.progressReferrals} в процессе",
+                            "${state.accountStat?.inProcess} в процессе",
                         )
                     }
                 }

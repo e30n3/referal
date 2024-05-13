@@ -22,7 +22,8 @@ class ProfileViewModel :
             name = currentAccount?.name.orEmpty(),
             email = currentAccount?.email.orEmpty(),
             password = currentAccount?.password.orEmpty(),
-            account = currentAccount
+            account = currentAccount,
+            accountStat = repository.getAccountStats()
         )
     }
 

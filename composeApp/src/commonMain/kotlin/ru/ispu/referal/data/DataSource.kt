@@ -4,6 +4,7 @@ import kotlinx.coroutines.delay
 import ru.ispu.referal.data.defaultData.DefaultAccounts
 import ru.ispu.referal.data.defaultData.DefaultOffers
 import ru.ispu.referal.data.defaultData.DefaultReferrals
+import ru.ispu.referal.domain.model.AccountStat
 import ru.ispu.referal.domain.model.Offer
 import ru.ispu.referal.domain.model.Referral
 import ru.ispu.referal.domain.model.ReferralStatus
@@ -95,6 +96,18 @@ class DataSource {
 
     suspend fun addReferral(referral: Referral) = withRandomDelay {
         referrals = listOf(referral) + referrals
+    }
+
+    suspend fun getAccountStats(accountId: String) = withRandomDelay {
+        accounts.find { it.id == accountId }?.id?.let {
+            AccountStat(
+                total = referrals.filter { it.companyId == accountId }.size,
+                success = referrals.filter {
+                    it.companyId == accountId && it.status == ReferralStatus.FAILED ||
+                            it.companyId == accountId && it.status == ReferralStatus.PAYED
+                }.size,
+            )
+        }
     }
 
 }
