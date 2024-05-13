@@ -103,7 +103,7 @@ private fun ScreenContent(
                                                 CompanyReferralDetailEvent.AmountChanged(newAmount)
                                             )
                                         },
-                                        label = { Text("Итог, ₽") },
+                                        label = { Text("Комиссия, ₽") },
                                         modifier = Modifier.fillMaxWidth(),
                                         trailingIcon = {
                                             IconButton(onClick = {
@@ -134,8 +134,29 @@ private fun ScreenContent(
                                     )
                                 }
 
-                                PAYING -> {}
-                                PAYED -> {}
+                                PAYING -> Column {
+                                    Row {
+                                        Icon(Icons.Default.CurrencyRuble, contentDescription = null)
+                                        Spacer(Modifier.width(8.dp))
+                                        Text(
+                                            text = state.referral.amount.toString(),
+                                            style = MaterialTheme.typography.bodyMedium
+                                        )
+                                    }
+                                    Button(
+                                        onClick = { eventHandler(CompanyReferralDetailEvent.NextClicked) },
+                                        modifier = Modifier.fillMaxWidth()
+                                    ) { Text("Подтвердить выплату") }
+                                }
+
+                                PAYED -> Row {
+                                    Icon(Icons.Default.CurrencyRuble, contentDescription = null)
+                                    Spacer(Modifier.width(8.dp))
+                                    Text(
+                                        text = state.referral.amount.toString(),
+                                        style = MaterialTheme.typography.bodyMedium
+                                    )
+                                }
                             }
                         }
                     }
