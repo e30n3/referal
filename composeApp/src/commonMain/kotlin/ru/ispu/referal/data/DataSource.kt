@@ -101,10 +101,10 @@ class DataSource {
     suspend fun getAccountStats(accountId: String) = withRandomDelay {
         accounts.find { it.id == accountId }?.id?.let {
             AccountStat(
-                total = referrals.filter { it.companyId == accountId }.size,
+                total = referrals.filter { it.companyId == accountId || it.agentId == accountId }.size,
                 success = referrals.filter {
-                    it.companyId == accountId && it.status == ReferralStatus.FAILED ||
-                            it.companyId == accountId && it.status == ReferralStatus.PAYED
+                    (it.companyId == accountId || it.agentId == accountId) && it.status == ReferralStatus.FAILED ||
+                            (it.companyId == accountId || it.agentId == accountId) && it.status == ReferralStatus.PAYED
                 }.size,
             )
         }
