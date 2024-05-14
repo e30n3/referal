@@ -64,11 +64,13 @@ private fun ScreenContent(
     eventHandler: (AgentReferralDetailEvent) -> Unit
 ) {
     Column {
-        TopAppBar(title = { Text("Реферал") }, navigationIcon = {
-            IconButton({ eventHandler(AgentReferralDetailEvent.BackClicked) }) {
-                Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null)
-            }
-        })
+        TopAppBar(
+            title = { Text("Реферал для ${state.referral?.offer}") },
+            navigationIcon = {
+                IconButton({ eventHandler(AgentReferralDetailEvent.BackClicked) }) {
+                    Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null)
+                }
+            })
         Column(Modifier.verticalScroll(rememberScrollState()).padding(16.dp)) {
             if (state.referral?.status == FAILED) {
                 ReferralStatusBadge(state.referral.status, true)

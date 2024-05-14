@@ -28,7 +28,8 @@ object DefaultReferrals {
             email = "viktor.m@example.com",
             comment = defaultComment,
             date = "14.03.2024",
-            status = ReferralStatus.CREATED
+            offer = "M3",
+            status = ReferralStatus.CREATED,
         ), Referral(
             client = "Борис В.",
             agent = "Андрей Б.",
@@ -37,6 +38,7 @@ object DefaultReferrals {
             email = "boris.v@example.com",
             comment = defaultComment,
             date = "12.03.2024",
+            offer = "F1 car",
             status = ReferralStatus.SIGNED
         ), Referral(
             client = "Елисей Е.",
@@ -46,6 +48,7 @@ object DefaultReferrals {
             email = "elisey.e@example.com",
             comment = defaultComment,
             date = "07.03.2024",
+            offer = "Big Truck LL",
             status = ReferralStatus.IN_PROGRESS
         ), Referral(
             client = "Данил В.",
@@ -55,6 +58,7 @@ object DefaultReferrals {
             email = "danil.v@example.com",
             comment = defaultComment,
             date = "01.03.2024",
+            offer = "TruckFH",
             status = ReferralStatus.PAYED
         ), Referral(
             client = "Алексей А.",
@@ -64,6 +68,7 @@ object DefaultReferrals {
             email = "alexey.a@example.com",
             comment = defaultComment,
             date = "28.02.2024",
+            offer = "M3",
             status = ReferralStatus.FAILED
         ), Referral(
             client = "София С.",
@@ -73,6 +78,7 @@ object DefaultReferrals {
             email = "sofia.s@example.com",
             comment = defaultComment,
             date = "15.02.2024",
+            offer = "Big Truck LL",
             status = ReferralStatus.ACCEPTED
         ), Referral(
             client = "Михаил Д.",
@@ -82,6 +88,7 @@ object DefaultReferrals {
             email = "mikhail.d@example.com",
             comment = defaultComment,
             date = "10.02.2024",
+            offer = "TruckFH",
             status = ReferralStatus.OFFERED
         ), Referral(
             client = "Ирина Ш.",
@@ -91,6 +98,7 @@ object DefaultReferrals {
             email = "irina.s@example.com",
             comment = defaultComment,
             date = "05.02.2024",
+            offer = "M3",
             status = ReferralStatus.COMPLETED
         ), Referral(
             client = "Олег Н.",
@@ -100,6 +108,7 @@ object DefaultReferrals {
             email = "oleg.n@example.com",
             comment = defaultComment,
             date = "20.01.2024",
+            offer = "M3",
             status = ReferralStatus.PAYING
         ),
 
@@ -112,6 +121,7 @@ object DefaultReferrals {
             email = "sergey.k@example.com",
             comment = defaultComment,
             date = "10.04.2024",
+            offer = "M3",
             status = ReferralStatus.CREATED
         ),
         Referral(
@@ -122,6 +132,7 @@ object DefaultReferrals {
             email = "natalya.l@example.com",
             comment = defaultComment,
             date = "08.04.2024",
+            offer = "F1 car",
             status = ReferralStatus.SIGNED
         ),
         Referral(
@@ -132,6 +143,7 @@ object DefaultReferrals {
             email = "andrey.p@example.com",
             comment = defaultComment,
             date = "05.04.2024",
+            offer = "Big Truck LL",
             status = ReferralStatus.IN_PROGRESS
         ),
         Referral(
@@ -142,6 +154,7 @@ object DefaultReferrals {
             email = "ekaterina.s@example.com",
             comment = defaultComment,
             date = "02.04.2024",
+            offer = "TruckFH",
             status = ReferralStatus.PAYED
         ),
         Referral(
@@ -152,6 +165,7 @@ object DefaultReferrals {
             email = "oleg.r@example.com",
             comment = defaultComment,
             date = "30.03.2024",
+            offer = "High Ring",
             status = ReferralStatus.FAILED
         ),
         Referral(
@@ -162,6 +176,7 @@ object DefaultReferrals {
             email = "maria.k@example.com",
             comment = defaultComment,
             date = "25.03.2024",
+            offer = "Silver",
             status = ReferralStatus.ACCEPTED
         ),
         Referral(
@@ -172,6 +187,7 @@ object DefaultReferrals {
             email = "ivan.i@example.com",
             comment = defaultComment,
             date = "20.03.2024",
+            offer = "WorldWide",
             status = ReferralStatus.OFFERED
         ),
         Referral(
@@ -182,6 +198,7 @@ object DefaultReferrals {
             email = "svetlana.m@example.com",
             comment = defaultComment,
             date = "15.03.2024",
+            offer = "M3",
             status = ReferralStatus.COMPLETED
         ),
         Referral(
@@ -192,6 +209,7 @@ object DefaultReferrals {
             email = "dmitry.n@example.com",
             comment = defaultComment,
             date = "10.03.2024",
+            offer = "Big Truck LL",
             status = ReferralStatus.PAYING
         ),
 
@@ -204,6 +222,7 @@ object DefaultReferrals {
             email = "alexander.n@example.com",
             comment = defaultComment,
             date = "12.04.2024",
+            offer = "TruckFH",
             status = ReferralStatus.CREATED
         ),
         Referral(
@@ -214,6 +233,7 @@ object DefaultReferrals {
             email = "olga.k@example.com",
             comment = defaultComment,
             date = "10.04.2024",
+            offer = "F1 car",
             status = ReferralStatus.SIGNED
         ),
         Referral(
@@ -224,6 +244,7 @@ object DefaultReferrals {
             email = "igor.l@example.com",
             comment = defaultComment,
             date = "07.04.2024",
+            offer = "M3",
             status = ReferralStatus.IN_PROGRESS
         ),
         Referral(
@@ -234,6 +255,7 @@ object DefaultReferrals {
             email = "elena.f@example.com",
             comment = defaultComment,
             date = "04.04.2024",
+            offer = "High Ring",
             status = ReferralStatus.PAYED
         ),
         Referral(
@@ -244,6 +266,7 @@ object DefaultReferrals {
             email = "stanislav.v@example.com",
             comment = defaultComment,
             date = "01.04.2024",
+            offer = "Big Truck LL",
             status = ReferralStatus.FAILED
         ),
         Referral(
@@ -254,6 +277,7 @@ object DefaultReferrals {
             email = "anna.g@example.com",
             comment = defaultComment,
             date = "28.03.2024",
+            offer = "Silver",
             status = ReferralStatus.ACCEPTED
         ),
         Referral(
@@ -264,6 +288,7 @@ object DefaultReferrals {
             email = "nikolay.d@example.com",
             comment = defaultComment,
             date = "25.03.2024",
+            offer = "WorldWide",
             status = ReferralStatus.OFFERED
         ),
         Referral(
@@ -274,6 +299,7 @@ object DefaultReferrals {
             email = "victoria.e@example.com",
             comment = defaultComment,
             date = "22.03.2024",
+            offer = "TruckFH",
             status = ReferralStatus.COMPLETED
         ),
         Referral(
@@ -284,6 +310,7 @@ object DefaultReferrals {
             email = "sergey.z@example.com",
             comment = defaultComment,
             date = "19.03.2024",
+            offer = "M3",
             status = ReferralStatus.PAYING
         ),
 
@@ -296,6 +323,7 @@ object DefaultReferrals {
             email = "tatiana.m@example.com",
             comment = defaultComment,
             date = "11.04.2024",
+            offer = "F1 car",
             status = ReferralStatus.CREATED
         ),
         Referral(
@@ -306,6 +334,7 @@ object DefaultReferrals {
             email = "alexey.o@example.com",
             comment = defaultComment,
             date = "09.04.2024",
+            offer = "Big Truck LL",
             status = ReferralStatus.SIGNED
         ),
         Referral(
@@ -316,6 +345,7 @@ object DefaultReferrals {
             email = "larisa.p@example.com",
             comment = defaultComment,
             date = "06.04.2024",
+            offer = "M3",
             status = ReferralStatus.IN_PROGRESS
         ),
         Referral(
@@ -326,6 +356,7 @@ object DefaultReferrals {
             email = "vladimir.r@example.com",
             comment = defaultComment,
             date = "03.04.2024",
+            offer = "High Ring",
             status = ReferralStatus.PAYED
         ),
         Referral(
@@ -336,6 +367,7 @@ object DefaultReferrals {
             email = "evgenia.s@example.com",
             comment = defaultComment,
             date = "31.03.2024",
+            offer = "Silver",
             status = ReferralStatus.FAILED
         ),
         Referral(
@@ -346,6 +378,7 @@ object DefaultReferrals {
             email = "maksim.t@example.com",
             comment = defaultComment,
             date = "29.03.2024",
+            offer = "TruckFH",
             status = ReferralStatus.ACCEPTED
         ),
         Referral(
@@ -356,6 +389,7 @@ object DefaultReferrals {
             email = "inna.u@example.com",
             comment = defaultComment,
             date = "27.03.2024",
+            offer = "WorldWide",
             status = ReferralStatus.OFFERED
         ),
         Referral(
@@ -366,6 +400,7 @@ object DefaultReferrals {
             email = "denis.f@example.com",
             comment = defaultComment,
             date = "24.03.2024",
+            offer = "F1 car",
             status = ReferralStatus.COMPLETED
         ),
         Referral(
@@ -376,6 +411,7 @@ object DefaultReferrals {
             email = "yulia.h@example.com",
             comment = defaultComment,
             date = "21.03.2024",
+            offer = "M3",
             status = ReferralStatus.PAYING
         ),
 
@@ -388,6 +424,7 @@ object DefaultReferrals {
             email = "oksana.c@example.com",
             comment = defaultComment,
             date = "13.04.2024",
+            offer = "TruckFH",
             status = ReferralStatus.CREATED
         ),
         Referral(
@@ -398,6 +435,7 @@ object DefaultReferrals {
             email = "pavel.ch@example.com",
             comment = defaultComment,
             date = "11.04.2024",
+            offer = "Big Truck LL",
             status = ReferralStatus.SIGNED
         ),
         Referral(
@@ -408,6 +446,7 @@ object DefaultReferrals {
             email = "yuri.sh@example.com",
             comment = defaultComment,
             date = "08.04.2024",
+            offer = "M3",
             status = ReferralStatus.IN_PROGRESS
         ),
         Referral(
@@ -418,6 +457,7 @@ object DefaultReferrals {
             email = "evdokia.sh@example.com",
             comment = defaultComment,
             date = "05.04.2024",
+            offer = "High Ring",
             status = ReferralStatus.PAYED
         ),
         Referral(
@@ -428,6 +468,7 @@ object DefaultReferrals {
             email = "valentin.e@example.com",
             comment = defaultComment,
             date = "02.04.2024",
+            offer = "Silver",
             status = ReferralStatus.FAILED
         ),
         Referral(
@@ -438,6 +479,7 @@ object DefaultReferrals {
             email = "margarita.y@example.com",
             comment = defaultComment,
             date = "30.03.2024",
+            offer = "WorldWide",
             status = ReferralStatus.ACCEPTED
         ),
         Referral(
@@ -448,6 +490,7 @@ object DefaultReferrals {
             email = "konstantin.ya@example.com",
             comment = defaultComment,
             date = "27.03.2024",
+            offer = "TruckFH",
             status = ReferralStatus.OFFERED
         ),
         Referral(
@@ -458,6 +501,7 @@ object DefaultReferrals {
             email = "anastasia.zh@example.com",
             comment = defaultComment,
             date = "24.03.2024",
+            offer = "M3",
             status = ReferralStatus.COMPLETED
         ),
         Referral(
@@ -468,6 +512,7 @@ object DefaultReferrals {
             email = "daniil.b@example.com",
             comment = defaultComment,
             date = "21.03.2024",
+            offer = "Big Truck LL",
             status = ReferralStatus.PAYING
         ),
 
@@ -480,6 +525,7 @@ object DefaultReferrals {
             email = "fedor.a@example.com",
             comment = defaultComment,
             date = "10.04.2024",
+            offer = "F1 car",
             status = ReferralStatus.CREATED
         ),
         Referral(
@@ -490,6 +536,7 @@ object DefaultReferrals {
             email = "zoya.v@example.com",
             comment = defaultComment,
             date = "08.04.2024",
+            offer = "TruckFH",
             status = ReferralStatus.SIGNED
         ),
         Referral(
@@ -500,6 +547,7 @@ object DefaultReferrals {
             email = "artur.g@example.com",
             comment = defaultComment,
             date = "05.04.2024",
+            offer = "M3",
             status = ReferralStatus.IN_PROGRESS
         ),
         Referral(
@@ -510,6 +558,7 @@ object DefaultReferrals {
             email = "galina.d@example.com",
             comment = defaultComment,
             date = "02.04.2024",
+            offer = "High Ring",
             status = ReferralStatus.PAYED
         ),
         Referral(
@@ -520,6 +569,7 @@ object DefaultReferrals {
             email = "vladislav.e@example.com",
             comment = defaultComment,
             date = "30.03.2024",
+            offer = "Big Truck LL",
             status = ReferralStatus.FAILED
         ),
         Referral(
@@ -530,6 +580,7 @@ object DefaultReferrals {
             email = "irina.z@example.com",
             comment = defaultComment,
             date = "27.03.2024",
+            offer = "Silver",
             status = ReferralStatus.ACCEPTED
         ),
         Referral(
@@ -540,6 +591,7 @@ object DefaultReferrals {
             email = "anatoly.i@example.com",
             comment = defaultComment,
             date = "24.03.2024",
+            offer = "WorldWide",
             status = ReferralStatus.OFFERED
         ),
         Referral(
@@ -550,6 +602,7 @@ object DefaultReferrals {
             email = "natalia.k@example.com",
             comment = defaultComment,
             date = "21.03.2024",
+            offer = "F1 car",
             status = ReferralStatus.COMPLETED
         ),
         Referral(
@@ -560,6 +613,7 @@ object DefaultReferrals {
             email = "stanislav.l@example.com",
             comment = defaultComment,
             date = "18.03.2024",
+            offer = "M3",
             status = ReferralStatus.PAYING
         ),
 
@@ -572,6 +626,7 @@ object DefaultReferrals {
             email = "yulia.s@example.com",
             comment = defaultComment,
             date = "12.04.2024",
+            offer = "TruckFH",
             status = ReferralStatus.CREATED
         ),
         Referral(
@@ -582,6 +637,7 @@ object DefaultReferrals {
             email = "artem.t@example.com",
             comment = defaultComment,
             date = "09.04.2024",
+            offer = "Big Truck LL",
             status = ReferralStatus.SIGNED
         ),
         Referral(
@@ -592,6 +648,7 @@ object DefaultReferrals {
             email = "grigory.u@example.com",
             comment = defaultComment,
             date = "07.04.2024",
+            offer = "F1 car",
             status = ReferralStatus.IN_PROGRESS
         ),
         Referral(
@@ -602,6 +659,7 @@ object DefaultReferrals {
             email = "veronika.f@example.com",
             comment = defaultComment,
             date = "05.04.2024",
+            offer = "M3",
             status = ReferralStatus.PAYED
         ),
         Referral(
@@ -612,6 +670,7 @@ object DefaultReferrals {
             email = "alexander.h@example.com",
             comment = defaultComment,
             date = "02.04.2024",
+            offer = "High Ring",
             status = ReferralStatus.FAILED
         ),
         Referral(
@@ -622,6 +681,7 @@ object DefaultReferrals {
             email = "polina.c@example.com",
             comment = defaultComment,
             date = "30.03.2024",
+            offer = "Silver",
             status = ReferralStatus.ACCEPTED
         ),
         Referral(
@@ -632,6 +692,7 @@ object DefaultReferrals {
             email = "egor.ch@example.com",
             comment = defaultComment,
             date = "28.03.2024",
+            offer = "WorldWide",
             status = ReferralStatus.OFFERED
         ),
         Referral(
@@ -642,6 +703,7 @@ object DefaultReferrals {
             email = "elena.sh@example.com",
             comment = defaultComment,
             date = "25.03.2024",
+            offer = "TruckFH",
             status = ReferralStatus.COMPLETED
         ),
         Referral(
@@ -652,6 +714,7 @@ object DefaultReferrals {
             email = "anatoly.sh@example.com",
             comment = defaultComment,
             date = "22.03.2024",
+            offer = "M3",
             status = ReferralStatus.PAYING
         )
 

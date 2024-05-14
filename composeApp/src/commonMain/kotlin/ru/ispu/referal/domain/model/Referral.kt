@@ -15,6 +15,7 @@ data class Referral(
     val comment: String,
     val date: String,
     val status: ReferralStatus,
+    val offer: String,
     val amount: Int? = 5000,
     val id: String = UUID.randomUUID().toString()
 ) {

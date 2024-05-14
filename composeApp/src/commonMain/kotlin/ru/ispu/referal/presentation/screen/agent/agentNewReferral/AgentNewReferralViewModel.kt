@@ -43,6 +43,7 @@ class AgentNewReferralViewModel(private val offer: Offer?) :
                         comment = viewState.comment,
                         date = getCurrentDateAsString(),
                         status = ReferralStatus.CREATED,
+                        offer = offer?.title.orEmpty(),
                     )
                 ).onFailure {
                     it.printStackTrace()
