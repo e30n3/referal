@@ -16,6 +16,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.CurrencyRuble
 import androidx.compose.material.icons.filled.Done
+import androidx.compose.material.icons.filled.Payments
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -155,6 +156,15 @@ private fun ScreenContent(
                                         Spacer(Modifier.width(8.dp))
                                         Text(
                                             text = state.referral.amount.toString(),
+                                            style = MaterialTheme.typography.bodyMedium
+                                        )
+                                    }
+                                    Spacer(Modifier.height(4.dp))
+                                    Row {
+                                        Icon(Icons.Default.Payments, contentDescription = null)
+                                        Spacer(Modifier.width(8.dp))
+                                        Text(
+                                            text = state.referral.getAgent()?.phoneNumber.orEmpty(),
                                             style = MaterialTheme.typography.bodyMedium
                                         )
                                     }

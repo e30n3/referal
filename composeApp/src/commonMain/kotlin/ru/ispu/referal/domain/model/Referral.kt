@@ -24,6 +24,7 @@ data class Referral(
     val companyId = DefaultAccounts.accounts.find { it.name == company }?.id
 
     val agentId = DefaultAccounts.accounts.find { it.name == agent }?.id
+    fun getAgent() = DefaultAccounts.accounts.find { it.id == agentId }
 }
 
 enum class ReferralStatus(val text: String, val bgGradient: Brush, val textColor: Color) {
