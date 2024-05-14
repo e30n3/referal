@@ -112,7 +112,7 @@ private fun ScreenContent(
                                     ) { Text("Запросить средства") }
                                 }
 
-                                PAYING, PAYED -> {
+                                PAYING -> {
                                     Row {
                                         Icon(Icons.Default.CurrencyRuble, contentDescription = null)
                                         Spacer(Modifier.width(8.dp))
@@ -120,6 +120,25 @@ private fun ScreenContent(
                                             text = state.referral.amount.toString(),
                                             style = MaterialTheme.typography.bodyMedium
                                         )
+                                    }
+                                }
+
+                                PAYED -> {
+                                    Row {
+                                        Icon(Icons.Default.CurrencyRuble, contentDescription = null)
+                                        Spacer(Modifier.width(8.dp))
+                                        Text(
+                                            text = state.referral.amount.toString(),
+                                            style = MaterialTheme.typography.bodyMedium
+                                        )
+                                    }
+                                    val isTextVisible = remember { mutableStateOf(false) }
+                                    Button(
+                                        onClick = { isTextVisible.value = true },
+                                        modifier = Modifier.fillMaxWidth()
+                                    ) { Text("Отправить жалобу") }
+                                    AnimatedVisibility(isTextVisible.value) {
+                                        Text("Спасибо, ваша жалоба будет рассмотрена!")
                                     }
                                 }
                             }
