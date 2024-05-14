@@ -1,5 +1,6 @@
 package ru.ispu.referal.presentation.screen.agent.agentHome
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -55,7 +56,7 @@ fun AgentHomeScreen() {
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
 private fun ScreenContent(state: AgentHomeState, eventHandler: (AgentHomeEvent) -> Unit) {
     Column {
@@ -64,7 +65,11 @@ private fun ScreenContent(state: AgentHomeState, eventHandler: (AgentHomeEvent) 
             IconButton({ expanded = true }) {
                 Icon(Icons.Default.Tune, contentDescription = null)
             }
-            FilterMenu(expanded) { expanded = false }
+            FilterMenu(
+                expanded,
+                categoryOptions = state.companies,
+                onChecked = { eventHandler(AgentHomeEvent.CompanyChecked(it)) }
+            ) { expanded = false }
             Spacer(Modifier.width(4.dp))
             IconButton({ eventHandler(AgentHomeEvent.ProfileClicked) }) {
                 Icon(Icons.Default.Person, contentDescription = null)
@@ -84,7 +89,8 @@ private fun ScreenContent(state: AgentHomeState, eventHandler: (AgentHomeEvent) 
                     price = it.price,
                     location = it.location,
                     commission = it.commission,
-                    companyLogo = it.companyLogo
+                    companyLogo = it.companyLogo,
+                    modifier = Modifier.animateItemPlacement()
                 ) { eventHandler(AgentHomeEvent.OfferClicked(it)) }
             }
         }

@@ -66,6 +66,36 @@ object DefaultAccounts {
             email = "info@i.com",
             password = "vpass",
             isCompany = false,
-        )
+        ),
+        Account(
+            name = "Мария П.",
+            email = "info@m.com",
+            password = "vpass",
+            isCompany = false,
+        ),
+        Account(
+            name = "Антон Л.",
+            email = "info@l.com",
+            password = "vpass",
+            isCompany = false,
+        ),
+        Account(
+            name = "Виктор С.",
+            email = "info@v.com",
+            password = "vpass",
+            isCompany = false,
+        ),
+        Account(
+            name = "Екатерина М.",
+            email = "info@e.com",
+            password = "vpass",
+            isCompany = false,
+        ),
+        Account(
+            name = "Павел Р.",
+            email = "info@p.com",
+            password = "vpass",
+            isCompany = false,
+        ),
     )
 }

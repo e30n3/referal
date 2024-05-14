@@ -9,8 +9,8 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.material3.Checkbox
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.MaterialTheme
@@ -21,29 +21,25 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun FilterMenu(expanded: Boolean, isFull: Boolean = true, onDismissRequest: () -> Unit) {
+fun FilterMenu(
+    expanded: Boolean,
+    isFull: Boolean = true,
+    categoryOptions: Map<String, Boolean> = emptyMap(),
+    onChecked: (String) -> Unit = {},
+    onDismissRequest: () -> Unit
+) {
     var expandedSort by remember { mutableStateOf(false) }
     var expandedCategory by remember { mutableStateOf(false) }
     var selectedSortOption by remember { mutableStateOf("комиссия % ↓") }
-    var selectedCategoryOption by remember { mutableStateOf("Все") }
+    val selectedCategoryOption by remember { mutableStateOf("Укажите компании") }
 
     val sortOptions = listOf("цена ↑", "цена ↓", "комиссия % ↑", "комиссия % ↓")
-    val categoryOptions = listOf(
-        "Авто",
-        "Часы и украшения",
-        "Недвижимость",
-        "Электроника",
-        "Путешествия",
-        "Финансы",
-        "Искусство",
-        "Эксклюзивные услуги"
-    )
+
 
     DropdownMenu(
         expanded = expanded,
@@ -53,7 +49,7 @@ fun FilterMenu(expanded: Boolean, isFull: Boolean = true, onDismissRequest: () -
         Column(modifier = Modifier.padding(16.dp)) {
             // Sort Drop Down
             Text(
-                text = "сортировка",
+                text = "Сортировка",
                 fontWeight = FontWeight.Bold,
                 fontSize = 16.sp,
                 color = MaterialTheme.colorScheme.onSurface
@@ -79,13 +75,14 @@ fun FilterMenu(expanded: Boolean, isFull: Boolean = true, onDismissRequest: () -
                 Spacer(modifier = Modifier.height(16.dp))
 
                 // Category Drop Down
-                Text(
-                    text = "категория",
+                /*Text(
+                    text = "Компания",
                     fontWeight = FontWeight.Bold,
                     fontSize = 16.sp,
                     color = MaterialTheme.colorScheme.onSurface
                 )
                 Spacer(modifier = Modifier.height(8.dp))
+                */
                 Box(modifier = Modifier
                     .fillMaxWidth()
                     .background(MaterialTheme.colorScheme.surface)
@@ -98,17 +95,17 @@ fun FilterMenu(expanded: Boolean, isFull: Boolean = true, onDismissRequest: () -
                         categoryOptions.forEach { option ->
                             DropdownMenuItem(text = {
                                 Row(verticalAlignment = androidx.compose.ui.Alignment.CenterVertically) {
-                                    Box(
-                                        modifier = Modifier
-                                            .size(16.dp)
-                                            .background(Color(0xFFFFA500))
-                                    ) // Orange color box
+                                    Checkbox(
+                                        option.value,
+                                        onCheckedChange = {
+                                            onChecked(option.key)
+                                        }
+                                    )
                                     Spacer(modifier = Modifier.width(8.dp))
-                                    Text(text = option)
+                                    Text(text = option.key)
                                 }
                             }, onClick = {
-                                selectedCategoryOption = option
-                                expandedCategory = false
+                                onChecked(option.key)
                             })
                         }
                     }
